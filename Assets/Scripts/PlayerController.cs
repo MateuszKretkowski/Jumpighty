@@ -56,8 +56,10 @@ public class PlayerController : MonoBehaviour
         {
             if (force != 0f && !isPreparing)
             {
-                rb.AddForce(Vector3.up * force, ForceMode.Impulse);
-                rb.AddForce(Vector3.forward * force, ForceMode.Impulse);
+                Vector3 forward = transform.forward;
+                Vector3 up = transform.up;
+                rb.AddForce(up * force, ForceMode.Impulse);
+                rb.AddForce(forward * force, ForceMode.Impulse);
                 force = 0f;
             }
 
