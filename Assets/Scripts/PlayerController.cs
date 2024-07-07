@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Transform pointToJump;
 
     public Rigidbody rb;
     public BoxCollider groundCheck;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
         {
             isPreparing = false;
         }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        transform.LookAt(pointToJump);
         if (canJump)
         {
             if (force != 0f && !isPreparing)
