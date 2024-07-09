@@ -63,7 +63,9 @@
     <Compile Include="Assets\Scripts\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\addMeshColliders.cs" />
     <Compile Include="Assets\Scripts\PixelateMaterial.cs" />
+    <Compile Include="Assets\ArmsScript.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\FallCollider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
