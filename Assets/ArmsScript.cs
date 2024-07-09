@@ -6,6 +6,7 @@ public class ArmsScript : MonoBehaviour
 {
 
     public Transform LookAtTarget;
+    public bool isRight;
 
     void Start()
     {
@@ -14,7 +15,18 @@ public class ArmsScript : MonoBehaviour
 
     void Update()
     {
-        transform.LookAt(LookAtTarget); 
+        if (isRight)
+        {
+            Quaternion parentRotation = transform.parent.rotation;
+            Quaternion lookDownRotation = Quaternion.Euler(-90, parentRotation.eulerAngles.y, parentRotation.eulerAngles.z);
+            transform.rotation = lookDownRotation;
+        }
+        else
+        {
+            Quaternion parentRotation = transform.parent.rotation;
+            Quaternion lookDownRotation = Quaternion.Euler(-90, parentRotation.eulerAngles.y, parentRotation.eulerAngles.z + 180);
+            transform.rotation = lookDownRotation;
+        }
     }
 
 }
