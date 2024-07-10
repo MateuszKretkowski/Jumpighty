@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public bool isPreparing;
     [SerializeField] private bool canJump;
 
-    [SerializeField] private float force;
+    [SerializeField] public float force;
     [SerializeField] private float maxForce = 100f;
 
     void Start()

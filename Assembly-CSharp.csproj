@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\addMeshColliders.cs" />
+    <Compile Include="Assets\HandScript.cs" />
     <Compile Include="Assets\Scripts\PixelateMaterial.cs" />
     <Compile Include="Assets\ArmsScript.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
