@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7968905418307004277}
   - component: {fileID: 639753610389164172}
   - component: {fileID: 3802177433938110931}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: furnitureForTv
   m_TagString: Untagged
   m_Icon: {fileID: 0}

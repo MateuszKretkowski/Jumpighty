@@ -31,7 +31,6 @@ public class HandScript : MonoBehaviour
             Vector3 newLocalPosition = transform.localPosition;
             newLocalPosition.z += playerController.force / normalizer;
             transform.localPosition = newLocalPosition;
-            Debug.Log(transform.localPosition);
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {

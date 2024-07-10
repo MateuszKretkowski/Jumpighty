@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7107468330223100395}
   - component: {fileID: 6752585586428730931}
   - component: {fileID: 8251009758752246843}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FurnitureUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

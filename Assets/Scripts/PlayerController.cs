@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public BoxCollider groundCheck;
     public bool isPreparing;
+    public float landingForce = 5f;
     [SerializeField] private bool canJump;
 
     [SerializeField] public float force;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             canJump = true;
+            rb.AddForce(Vector3.down * landingForce, ForceMode.Impulse);
         }
     }
 

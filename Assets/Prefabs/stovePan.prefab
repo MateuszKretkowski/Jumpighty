@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1978776476273499035}
   - component: {fileID: -3448125042755048309}
   - component: {fileID: 304590536661548111}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: stovePan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
