@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] public float force;
     [SerializeField] private float minForce = 5f;
-    [SerializeField] private float maxForce = 100f;
+    [SerializeField] private float maxForce = 60f;
     // [SerializeField] private float delayMax = 0.5f;
     // [SerializeField] private float delay;
 

@@ -22,11 +22,12 @@ public class HandScript : MonoBehaviour
 
     void Update()
     {
+        playerController = player.GetComponent<PlayerController>();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // Do nothing, just waiting for the key to be held down
         }
-        if (Input.GetKey(KeyCode.Space) && playerController.force < 100)
+        if (Input.GetKey(KeyCode.Space) && playerController.force < 55f && playerController.isPreparing)
         {
             Vector3 newLocalPosition = transform.localPosition;
             newLocalPosition.z += playerController.force / normalizer;
