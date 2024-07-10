@@ -14,7 +14,7 @@ public class FallCollider : MonoBehaviour
     {
         if (collision.gameObject.layer == 6)
         {
-            collision.gameObject.transform.position = Vector3.zero;
+            collision.gameObject.transform.position = new Vector3 (0, 1, 0);
         }
     }
 
