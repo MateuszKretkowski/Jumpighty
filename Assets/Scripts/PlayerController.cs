@@ -14,10 +14,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool canJump;
 
     [SerializeField] public float force;
+    [SerializeField] private float minForce = 5f;
     [SerializeField] private float maxForce = 100f;
+    // [SerializeField] private float delayMax = 0.5f;
+    // [SerializeField] private float delay;
 
     void Start()
     {
+        // delay = 0f;
         isPreparing = false;
         canJump = true;
         groundCheck.isTrigger = true;
@@ -39,9 +43,19 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             canJump = true;
+            force = minForce;
             rb.AddForce(Vector3.down * landingForce, ForceMode.Impulse);
         }
     }
+
+//    private void OnTriggerEnter(Collider other)
+//    {
+//       if (other.gameObject.layer == 0)
+//        {
+//            Debug.Log("Collision!");
+//            rb.AddForce(Vector3.back * force, ForceMode.Impulse);
+//        }
+//    }
 
     private void OnCollisionExit(Collision collision)
     {
@@ -53,16 +67,20 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // if (delay > 0f)
+        // {
+            //    delay -= Time.deltaTime;
+        // }
         transform.LookAt(pointToJump);
         if (canJump)
         {
-            if (force != 0f && !isPreparing)
+            if (force > minForce && !isPreparing)
             {
                 Vector3 forward = transform.forward;
                 Vector3 up = transform.up;
                 rb.AddForce(up * force, ForceMode.Impulse);
                 rb.AddForce(forward * force, ForceMode.Impulse);
-                force = 0f;
+                // delay = delayMax;
             }
 
 

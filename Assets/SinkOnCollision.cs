@@ -44,16 +44,12 @@ public class SinkOnCollision : MonoBehaviour
         while (Vector3.Distance(transform.localPosition, targetPosition) > 0.1f && !isRaising)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, Time.deltaTime * sinkSpeed);
-            Debug.Log("Sinking");
-            Debug.Log(Vector3.Distance(transform.localPosition, targetPosition));
             yield return null;
         }
         isRaising = true;
         while (Vector3.Distance(transform.localPosition, originalPosition) > 0.01f && isRaising)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, originalPosition, Time.deltaTime * sinkSpeed);
-            Debug.Log("Raising");
-            Debug.Log(Vector3.Distance(transform.localPosition, originalPosition));
             yield return null;
         }
         isSinking = false;
