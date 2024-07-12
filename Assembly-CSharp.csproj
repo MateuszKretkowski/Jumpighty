@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\FallCollider.cs" />
+    <Compile Include="Assets\RagdollOnOff.cs" />
     <Compile Include="Assets\Scripts\SinkOnCollision.cs" />
     <Compile Include="Assets\Scripts\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\HandScript.cs" />
