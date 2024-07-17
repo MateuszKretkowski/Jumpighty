@@ -39,8 +39,12 @@ public class RagdollOnOff : MonoBehaviour
     Rigidbody[] ragDollRigidbodies;
     void GetRagdollBits()
     {
-        ragDollColliders = armatureRoot.GetComponentsInChildren<BoxCollider>();
-        ragDollRigidbodies = armatureRoot.GetComponentsInChildren<Rigidbody>();
+        ragDollColliders = armatureRoot.GetComponentsInChildren<BoxCollider>(true);
+        ragDollColliders = System.Array.FindAll(ragDollColliders, collider => collider.gameObject.name != "HeadCollider");
+
+        ragDollRigidbodies = armatureRoot.GetComponentsInChildren<Rigidbody>(true);
+        ragDollRigidbodies = System.Array.FindAll(ragDollRigidbodies, rb => rb.gameObject.name != "HeadCollider");
+
         Debug.Log("ragDollColliders: " + ragDollColliders);
         Debug.Log("ragDollRigidbodies: " + ragDollRigidbodies);
     }
@@ -82,15 +86,16 @@ public class RagdollOnOff : MonoBehaviour
         }
     }
 
+    public GameObject Armature;
     public Transform pointToRagdoll;
     public Transform lookAtPosition;
     public float timeToRagdoll;
     public void TransformToPreviousPosition()
     {
         mainCollider.enabled = false;
-        transform.position = pointToRagdoll.position;
-        // transform.position = Vector3.Lerp(transform.position, pointToRagdoll.position, timeToRagdoll * Time.deltaTime);
-        transform.LookAt(lookAtPosition);
+        // Armature.transform.position = pointToRagdoll.position;
+        Armature.transform.position = Vector3.Lerp(transform.position, pointToRagdoll.position, timeToRagdoll * Time.deltaTime);
+        Armature.transform.LookAt(lookAtPosition);
         mainCollider.enabled = true;
     }
 
