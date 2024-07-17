@@ -315,12 +315,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278200024}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: -0.037169628}
+  m_LocalScale: {x: 0.037169594, y: 0.03716961, z: 0.037169613}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2044054676}
+  m_Children:
+  - {fileID: 3592892242333597091}
+  m_Father: {fileID: 3133561357302023315}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &278200027
 BoxCollider:
@@ -1051,7 +1052,7 @@ Transform:
   m_GameObject: {fileID: 810982762}
   serializedVersion: 2
   m_LocalRotation: {x: 0.18041089, y: -0.019659905, z: 0.0036067753, w: 0.98338825}
-  m_LocalPosition: {x: 0.20000012, y: 4.053, z: -4.193}
+  m_LocalPosition: {x: 0.20000012, y: 4.053, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1119,7 +1120,7 @@ Transform:
   m_GameObject: {fileID: 940127369}
   serializedVersion: 2
   m_LocalRotation: {x: 0.18041089, y: -0.019659905, z: 0.0036067753, w: 0.98338825}
-  m_LocalPosition: {x: 0.20000012, y: 4.053, z: -4.193}
+  m_LocalPosition: {x: 0.20000012, y: 4.053, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2687,7 +2688,7 @@ Transform:
   m_GameObject: {fileID: 1955462860}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.807, y: 0.713, z: -0}
+  m_LocalPosition: {x: -1, y: 0.713, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2759,7 +2760,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1666826019}
-  - {fileID: 278200025}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2044054677
@@ -3342,7 +3342,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.875
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -3715,12 +3715,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3594839115206987481}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 62.797802, y: 62.797806, z: 62.79781}
+  m_LocalScale: {x: 62.7978, y: 62.79781, z: 62.797806}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3592892242333597091}
+  - {fileID: 278200025}
   m_Father: {fileID: 302378863}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &3311477823809151375
@@ -3833,13 +3833,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7417878892303102038}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: -0.000000008004328, z: -0.024565104}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: -0.000000059604638, z: -0.7071068, w: -0.000000059604638}
+  m_LocalPosition: {x: 0, y: -0.33910826, z: 0}
+  m_LocalScale: {x: 26.903694, y: 26.903692, z: 26.90371}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6011031331002665179}
-  m_Father: {fileID: 3133561357302023315}
+  m_Father: {fileID: 278200025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3594839115206987481
 GameObject:
@@ -4506,7 +4506,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.875
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -4697,7 +4697,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.25
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -4981,7 +4981,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 3.125
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5158,7 +5158,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.875
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5303,7 +5303,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 3.125
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5446,7 +5446,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.875
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

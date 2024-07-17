@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class RagdollOnOff : MonoBehaviour
 {
@@ -19,17 +20,7 @@ public class RagdollOnOff : MonoBehaviour
 
     void Update()
     {
-        headColliderScript = headCollider.GetComponent<HeadCollider>();
-        if (!headColliderScript.isRagDolled)
-        {
-            pointToRagdoll = transform;
-        }
-        if (headColliderScript.isRagDolled)
-        {
-            Debug.Log(headColliderScript.isRagDolled);
-            Debug.Log("Ragdoll mode: ON");
-            RagdollModeOn();
-        }
+        // headColliderScript = headCollider.GetComponent<HeadCollider>();
     }
 
     // private void OnTriggerEnter(Collider collision)
@@ -44,12 +35,14 @@ public class RagdollOnOff : MonoBehaviour
         // RagdollModeOff();
     // }
 
-    Collider[] ragDollColliders;
+    BoxCollider[] ragDollColliders;
     Rigidbody[] ragDollRigidbodies;
     void GetRagdollBits()
     {
-        ragDollColliders = armatureRoot.GetComponentsInChildren<Collider>();
+        ragDollColliders = armatureRoot.GetComponentsInChildren<BoxCollider>();
         ragDollRigidbodies = armatureRoot.GetComponentsInChildren<Rigidbody>();
+        Debug.Log("ragDollColliders: " + ragDollColliders);
+        Debug.Log("ragDollRigidbodies: " + ragDollRigidbodies);
     }
 
     public void RagdollModeOn()
@@ -61,11 +54,13 @@ public class RagdollOnOff : MonoBehaviour
         foreach(Collider col in ragDollColliders)
         {
             col.enabled = true;
+            Debug.Log("Collider: " + col);
         }
         foreach (Rigidbody rb in ragDollRigidbodies)
         {
             rb.isKinematic = false;
             rb.useGravity = true;
+            Debug.Log("RigidBody: " + rb);
         }
     }
 
@@ -88,11 +83,14 @@ public class RagdollOnOff : MonoBehaviour
     }
 
     public Transform pointToRagdoll;
+    public Transform lookAtPosition;
     public float timeToRagdoll;
     public void TransformToPreviousPosition()
     {
         mainCollider.enabled = false;
-        transform.position = Vector3.Lerp(transform.position, pointToRagdoll.position, timeToRagdoll * Time.deltaTime);
+        transform.position = pointToRagdoll.position;
+        // transform.position = Vector3.Lerp(transform.position, pointToRagdoll.position, timeToRagdoll * Time.deltaTime);
+        transform.LookAt(lookAtPosition);
         mainCollider.enabled = true;
     }
 

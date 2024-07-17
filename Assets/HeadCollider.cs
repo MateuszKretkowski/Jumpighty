@@ -13,6 +13,7 @@ public class HeadCollider : MonoBehaviour
     void Start()
     {
         hasRagdolled = false;
+        isUnRagdolledLocal = false;
     }
 
     // Update is called once per frame
@@ -21,29 +22,26 @@ public class HeadCollider : MonoBehaviour
         if (isUnRagdolledLocal)
         {
             StartCoroutine(OnRagdollOff());
+            isUnRagdolledLocal = false;
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag != "Player" && !hasRagdolled)
         {
             Debug.Log("COLLISION ON");
-            isRagDolled = true;
+            ragdollOnOff.RagdollModeOn();
             hasRagdolled = true;
+            isUnRagdolledLocal = true;
         }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        Debug.Log("COLLISION OFF");
-        isUnRagdolledLocal = true;
     }
 
     IEnumerator OnRagdollOff()
     {
         yield return new WaitForSeconds(4);
         ragdollOnOff.RagdollModeOff();
+        ragdollOnOff.TransformToPreviousPosition();
         isUnRagdolledLocal = false;
     }
 
