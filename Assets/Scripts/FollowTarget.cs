@@ -14,9 +14,16 @@ public class FollowTarget : MonoBehaviour
     private float cinemachineTargetPitch;
     private float cinemachineTargetYaw;
 
+    public GameObject headColliderObject;
+    HeadCollider headCollider;
+
     private void LateUpdate()
     {
-        CameraLogic();
+        headCollider = headColliderObject.GetComponent<HeadCollider>();
+        if (!headCollider.isRagDolled)
+        {
+            CameraLogic();
+        }
     }
 
     private void CameraLogic()
