@@ -10,6 +10,9 @@ public class HeadCollider : MonoBehaviour
     public bool isRagDolled;
     public bool hasRagdolled;
     public bool isUnRagdolledLocal;
+
+    public float delayTime = 4f;
+    public float delay;
     void Start()
     {
         hasRagdolled = false;
@@ -19,6 +22,15 @@ public class HeadCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (delay > 0)
+        {
+            delay -= Time.deltaTime;
+            Debug.Log("DELAY: " + delay);
+        }
+        if (delay < 0)
+        {
+            delay = 0;
+        }
         if (isUnRagdolledLocal)
         {
             StartCoroutine(OnRagdollOff());
@@ -28,7 +40,7 @@ public class HeadCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag != "Player" && !hasRagdolled)
+        if (collision.gameObject.tag != "Player" && delay == 0)
         {
             Debug.Log("COLLISION ON");
             ragdollOnOff.RagdollModeOn();
@@ -43,7 +55,8 @@ public class HeadCollider : MonoBehaviour
         ragdollOnOff.RagdollModeOff();
         ragdollOnOff.TransformToPreviousPosition();
         isUnRagdolledLocal = false;
+        delay = delayTime;
     }
 
-    
+
 }
