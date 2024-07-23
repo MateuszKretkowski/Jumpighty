@@ -27,7 +27,7 @@ public class HandScript : MonoBehaviour
         {
             // Do nothing, just waiting for the key to be held down
         }
-        if (Input.GetKey(KeyCode.Space) && playerController.force < 55f && playerController.isPreparing)
+        if (playerController.force < 55f && playerController.isPreparing)
         {
             Vector3 newLocalPosition = transform.localPosition;
             newLocalPosition.z += playerController.force / normalizer;

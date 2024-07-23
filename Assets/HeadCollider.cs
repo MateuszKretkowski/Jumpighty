@@ -25,7 +25,6 @@ public class HeadCollider : MonoBehaviour
         if (delay > 0)
         {
             delay -= Time.deltaTime;
-            Debug.Log("DELAY: " + delay);
         }
         if (delay < 0)
         {
@@ -34,7 +33,6 @@ public class HeadCollider : MonoBehaviour
         if (isUnRagdolledLocal)
         {
             StartCoroutine(OnRagdollOff());
-            isUnRagdolledLocal = false;
         }
     }
 
@@ -42,8 +40,8 @@ public class HeadCollider : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player" && delay == 0)
         {
-            Debug.Log("COLLISION ON");
             ragdollOnOff.RagdollModeOn();
+
             hasRagdolled = true;
             isUnRagdolledLocal = true;
         }

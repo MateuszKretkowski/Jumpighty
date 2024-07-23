@@ -58,13 +58,11 @@ public class RagdollOnOff : MonoBehaviour
         foreach(Collider col in ragDollColliders)
         {
             col.enabled = true;
-            Debug.Log("Collider: " + col);
         }
         foreach (Rigidbody rb in ragDollRigidbodies)
         {
             rb.isKinematic = false;
             rb.useGravity = true;
-            Debug.Log("RigidBody: " + rb);
         }
     }
 

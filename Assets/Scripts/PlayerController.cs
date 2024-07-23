@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
     // [SerializeField] private float delayMax = 0.5f;
     // [SerializeField] private float delay;
 
+    HeadCollider headCollider;
+    public GameObject headColliderObject;
+
+    FollowTarget followTarget;
+
     void Start()
     {
         // delay = 0f;
@@ -31,6 +36,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        headCollider = headColliderObject.GetComponent<HeadCollider>();
+        followTarget = gameObject.GetComponent<FollowTarget>();
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isPreparing = false;
@@ -43,8 +50,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             canJump = true;
-            force = minForce;
             rb.AddForce(Vector3.down * landingForce, ForceMode.Impulse);
+            rb.velocity = new Vector3(0, 0, 0);
         }
     }
 
@@ -81,6 +88,7 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(up * force, ForceMode.Impulse);
                 rb.AddForce(forward * force, ForceMode.Impulse);
                 // delay = delayMax;
+                force = minForce;
             }
 
 
