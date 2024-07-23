@@ -38,11 +38,14 @@ public class PlayerController : MonoBehaviour
     {
         headCollider = headColliderObject.GetComponent<HeadCollider>();
         followTarget = gameObject.GetComponent<FollowTarget>();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isPreparing = true;
+        }
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isPreparing = false;
         }
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -91,18 +94,12 @@ public class PlayerController : MonoBehaviour
                 force = minForce;
             }
 
-
-            if (Input.GetKey(KeyCode.Space))
+            if (isPreparing)
             {
-                isPreparing = true;
                 if (force < maxForce)
                 {
                     force += 1f;
                 }
-            }
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                isPreparing = false;
             }
         }
             
