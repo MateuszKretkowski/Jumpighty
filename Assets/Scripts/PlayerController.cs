@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         if (rb.velocity.magnitude > 5f && other.gameObject.layer != 7)
         {
             Debug.Log("Collision!");
-            Vector3 directionToWall = other.transform.position - transform.position;
+            Vector3 directionToWall = other.transform.position - transform.position - new Vector3 (0, -7, 0);
             Vector3 collisionNormal = directionToWall.normalized;
 
             Vector3 reflectedVelocity = Vector3.Reflect(rb.velocity, collisionNormal);
