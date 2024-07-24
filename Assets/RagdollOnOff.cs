@@ -52,7 +52,7 @@ public class RagdollOnOff : MonoBehaviour
     // public GameObject[] arms;
     public void RagdollModeOn()
     {
-        mainCollider.enabled = false;
+        //mainCollider.enabled = false;
         // rb.isKinematic = true;
         // rb.useGravity = false;
         
@@ -74,7 +74,7 @@ public class RagdollOnOff : MonoBehaviour
     public void RagdollModeOff()
     {
         TransformToPreviousPosition();
-        mainCollider.enabled = true;
+        //mainCollider.enabled = true;
         // rb.isKinematic = false;
         // rb.useGravity = true;
 

@@ -64,6 +64,7 @@
     <Compile Include="Assets\RagdollOnOff.cs" />
     <Compile Include="Assets\Scripts\SinkOnCollision.cs" />
     <Compile Include="Assets\Scripts\FollowTarget.cs" />
+    <Compile Include="Assets\FollowTargetScript.cs" />
     <Compile Include="Assets\Scripts\HandScript.cs" />
     <Compile Include="Assets\Scripts\addMeshColliders.cs" />
     <Compile Include="Assets\Scripts\PixelateMaterial.cs" />
