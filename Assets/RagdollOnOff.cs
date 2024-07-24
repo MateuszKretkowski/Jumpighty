@@ -40,7 +40,7 @@ public class RagdollOnOff : MonoBehaviour
     void GetRagdollBits()
     {
         ragDollColliders = armatureRoot.GetComponentsInChildren<BoxCollider>(true);
-        ragDollColliders = System.Array.FindAll(ragDollColliders, collider => collider.gameObject.name != "HeadCollider");
+        ragDollColliders = System.Array.FindAll(ragDollColliders, collider => collider.gameObject.name != "HeadCollider" && collider.gameObject.tag != "arms");
 
         ragDollRigidbodies = armatureRoot.GetComponentsInChildren<Rigidbody>(true);
         ragDollRigidbodies = System.Array.FindAll(ragDollRigidbodies, rb => rb.gameObject.name != "HeadCollider");
@@ -49,11 +49,12 @@ public class RagdollOnOff : MonoBehaviour
         Debug.Log("ragDollRigidbodies: " + ragDollRigidbodies);
     }
 
+    // public GameObject[] arms;
     public void RagdollModeOn()
     {
         mainCollider.enabled = false;
-        rb.isKinematic = true;
-        rb.useGravity = false;
+        // rb.isKinematic = true;
+        // rb.useGravity = false;
         
         foreach(Collider col in ragDollColliders)
         {
@@ -64,14 +65,18 @@ public class RagdollOnOff : MonoBehaviour
             rb.isKinematic = false;
             rb.useGravity = true;
         }
+        // foreach (GameObject go in arms)
+        // {
+            // go.GetComponent<Rigidbody>().AddForce(Vector3.forward * 10f, ForceMode.Impulse);
+        // }
     }
 
     public void RagdollModeOff()
     {
         TransformToPreviousPosition();
         mainCollider.enabled = true;
-        rb.isKinematic = false;
-        rb.useGravity = true;
+        // rb.isKinematic = false;
+        // rb.useGravity = true;
 
         foreach (Collider col in ragDollColliders)
         {

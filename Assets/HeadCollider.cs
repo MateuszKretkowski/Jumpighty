@@ -13,6 +13,8 @@ public class HeadCollider : MonoBehaviour
 
     public float delayTime = 4f;
     public float delay;
+
+    public Rigidbody playerRb;
     void Start()
     {
         hasRagdolled = false;
@@ -38,7 +40,7 @@ public class HeadCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag != "Player" && delay == 0)
+        if (collision.gameObject.tag != "Player" && delay == 0 && playerRb.velocity.magnitude > 10f)
         {
             ragdollOnOff.RagdollModeOn();
 
