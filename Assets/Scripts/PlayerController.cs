@@ -58,14 +58,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-//    private void OnTriggerEnter(Collider other)
-//    {
-//       if (other.gameObject.layer == 0)
-//        {
-//            Debug.Log("Collision!");
-//            rb.AddForce(Vector3.back * force, ForceMode.Impulse);
-//        }
-//    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Vector3 velocity = rb.velocity;
+        float mass = rb.mass;
+        Vector3 momentum = mass * velocity;
+
+
+        if (rb.velocity.magnitude > 5f && other.gameObject.layer != 7)
+        {
+            Debug.Log("Collision!");
+            Vector3 directionToWall = other.transform.position - transform.position;
+            Vector3 collisionNormal = directionToWall.normalized;
+
+            Vector3 reflectedVelocity = Vector3.Reflect(rb.velocity, collisionNormal);
+
+            rb.velocity = reflectedVelocity;
+        }
+    }
 
     private void OnCollisionExit(Collision collision)
     {

@@ -1087,7 +1087,7 @@ Transform:
   m_GameObject: {fileID: 810982762}
   serializedVersion: 2
   m_LocalRotation: {x: 0.18041089, y: -0.019659905, z: 0.0036067753, w: 0.98338825}
-  m_LocalPosition: {x: 0.2, y: 4.052299, z: -5}
+  m_LocalPosition: {x: 0.2, y: 4.052299, z: -5.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1185,7 +1185,7 @@ Transform:
   m_GameObject: {fileID: 940127369}
   serializedVersion: 2
   m_LocalRotation: {x: 0.18041089, y: -0.019659905, z: 0.0036067753, w: 0.98338825}
-  m_LocalPosition: {x: 0.2, y: 4.052299, z: -5}
+  m_LocalPosition: {x: 0.2, y: 4.052299, z: -5.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2756,7 +2756,7 @@ Transform:
   m_GameObject: {fileID: 1955462860}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7122991, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7122991, z: -0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2841,6 +2841,7 @@ GameObject:
   - component: {fileID: 2044054678}
   - component: {fileID: 2044054677}
   - component: {fileID: 2044054680}
+  - component: {fileID: 2044054682}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2972,6 +2973,27 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1.5958501, z: 0.8751962}
+  m_Center: {x: 0, y: 0.3603329, z: 0.011344865}
+--- !u!65 &2044054682
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044054675}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.24, y: 1.78, z: 1.15}
   m_Center: {x: 0, y: 0.3603329, z: 0.011344865}
 --- !u!1 &2138000850
 GameObject:

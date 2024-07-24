@@ -55,7 +55,7 @@ public class RagdollOnOff : MonoBehaviour
         //mainCollider.enabled = false;
         // rb.isKinematic = true;
         // rb.useGravity = false;
-        
+        rb.AddForce(Vector3.back * 10f, ForceMode.Impulse);
         foreach(Collider col in ragDollColliders)
         {
             col.enabled = true;
