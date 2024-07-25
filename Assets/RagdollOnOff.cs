@@ -12,8 +12,12 @@ public class RagdollOnOff : MonoBehaviour
 
     public GameObject headCollider;
     HeadCollider headColliderScript;
+
+    bool isFirstTime;
+
     void Start()
     {
+        isFirstTime = true;
         GetRagdollBits();
         RagdollModeOff();
     }
@@ -25,20 +29,33 @@ public class RagdollOnOff : MonoBehaviour
 
     // private void OnTriggerEnter(Collider collision)
     // {
-        // Debug.Log("Ragdoll mode: ON");
-        // RagdollModeOn();
+    // Debug.Log("Ragdoll mode: ON");
+    // RagdollModeOn();
     // }
 
     // private void OnCollisionExit(Collision collision)
     // {
-        // Debug.Log("Ragdoll mode: ON");
-        // RagdollModeOff();
+    // Debug.Log("Ragdoll mode: ON");
+    // RagdollModeOff();
     // }
 
+    Transform[] bones;
+    Vector3[] initialPositions;
+    Quaternion[] initialRotations;
     BoxCollider[] ragDollColliders;
     Rigidbody[] ragDollRigidbodies;
     void GetRagdollBits()
     {
+        bones = armatureRoot.GetComponentsInChildren<Transform>(true);
+        initialPositions = new Vector3[bones.Length];
+        initialRotations = new Quaternion[bones.Length];
+
+        for (int i = 0; i < bones.Length; i++)
+        {
+            initialPositions[i] = bones[i].localPosition;
+            initialRotations[i] = bones[i].localRotation;
+        }
+
         ragDollColliders = armatureRoot.GetComponentsInChildren<BoxCollider>(true);
         ragDollColliders = System.Array.FindAll(ragDollColliders, collider => collider.gameObject.name != "HeadCollider" && collider.gameObject.tag != "arms");
 
@@ -47,6 +64,25 @@ public class RagdollOnOff : MonoBehaviour
 
         Debug.Log("ragDollColliders: " + ragDollColliders);
         Debug.Log("ragDollRigidbodies: " + ragDollRigidbodies);
+    }
+
+    public void resetRagdoll()
+    {
+        foreach (var rb in ragDollRigidbodies)
+        {
+            // rb.isKinematic = true;
+        }
+
+        for (int i = 0; i < bones.Length; i++)
+        {
+            bones[i].localPosition = initialPositions[i];
+            bones[i].localRotation = initialRotations[i];
+        }
+
+        foreach (var rb in ragDollRigidbodies)
+        {
+            // rb.isKinematic = false;
+        }
     }
 
     // public GameObject[] arms;
@@ -73,7 +109,14 @@ public class RagdollOnOff : MonoBehaviour
 
     public void RagdollModeOff()
     {
+
         TransformToPreviousPosition();
+
+        if (!isFirstTime)
+        {
+            resetRagdoll();
+        }
+        isFirstTime = false;
         //mainCollider.enabled = true;
         // rb.isKinematic = false;
         // rb.useGravity = true;
