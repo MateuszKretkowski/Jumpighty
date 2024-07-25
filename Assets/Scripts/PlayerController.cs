@@ -76,15 +76,6 @@ public class PlayerController : MonoBehaviour
             rb.velocity = reflectedVelocity;
         }
     }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.layer == 7)
-        {
-            canJump = false;
-        }
-    }
-
     private void FixedUpdate()
     {
         // if (delay > 0f)
@@ -102,6 +93,7 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(forward * force, ForceMode.Impulse);
                 // delay = delayMax;
                 force = minForce;
+                canJump = false;
             }
 
             if (isPreparing)
