@@ -58,14 +58,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void reflectForce(Collider other)
     {
         Vector3 velocity = rb.velocity;
         float mass = rb.mass;
         Vector3 momentum = mass * velocity;
 
 
-        if (rb.velocity.magnitude > 5f && other.gameObject.layer != 7)
+        if (rb.velocity.magnitude < 10f)
         {
             Debug.Log("Collision!");
             Vector3 directionToWall = other.transform.position - transform.position - new Vector3 (0, -7, 0);
