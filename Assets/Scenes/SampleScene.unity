@@ -2970,7 +2970,7 @@ MonoBehaviour:
   landingForce: 5
   canJump: 0
   force: 0
-  minForce: 5
+  minForce: 15
   maxForce: 55
   headColliderObject: {fileID: 278200024}
 --- !u!54 &2044054679
@@ -4513,6 +4513,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4813404513830709936, guid: d9f0df13eaae26b4ea0fa051ae06daa9, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4813404513830709936, guid: d9f0df13eaae26b4ea0fa051ae06daa9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4813404513830709936, guid: d9f0df13eaae26b4ea0fa051ae06daa9, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 43348717245676915, guid: d9f0df13eaae26b4ea0fa051ae06daa9, type: 3}
       propertyPath: m_Name
       value: couch
