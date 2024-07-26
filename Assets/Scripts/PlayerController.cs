@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
             Vector3 collisionNormal = directionToWall.normalized;
 
             Vector3 reflectedVelocity = Vector3.Reflect(rb.velocity, collisionNormal);
-
             rb.velocity = reflectedVelocity;
         }
     }

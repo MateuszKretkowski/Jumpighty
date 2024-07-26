@@ -29,7 +29,7 @@ public class ArmsScript : MonoBehaviour
         else
         {
             Quaternion parentRotation = transform.parent.rotation;
-            Quaternion lookDownRotation = Quaternion.Euler(-90, parentRotation.eulerAngles.y, parentRotation.eulerAngles.z + 180);
+            Quaternion lookDownRotation = Quaternion.Euler(-90, parentRotation.eulerAngles.y, -parentRotation.eulerAngles.z + 180);
             transform.rotation = lookDownRotation;
         }
         }
