@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void reflectForce(Collider other)
+    public void reflectForce(Collider other, float forceMultiplier)
     {
         Vector3 velocity = rb.velocity;
         float mass = rb.mass;
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
             Vector3 collisionNormal = directionToWall.normalized;
 
             Vector3 reflectedVelocity = Vector3.Reflect(rb.velocity, collisionNormal);
-            rb.velocity = reflectedVelocity * minForce;
+            rb.velocity = reflectedVelocity * forceMultiplier;
     }
     private void FixedUpdate()
     {
