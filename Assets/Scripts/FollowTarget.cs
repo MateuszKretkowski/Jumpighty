@@ -17,26 +17,28 @@ public class FollowTarget : MonoBehaviour
     public GameObject headColliderObject;
     HeadCollider headCollider;
 
+    void Start()
+    {
+        cinemachineTargetPitch = 0f;
+        cinemachineTargetYaw = 0f;
+    }
+
     private void LateUpdate()
     {
         headCollider = headColliderObject.GetComponent<HeadCollider>();
         Debug.Log("isRagDolled: " + headCollider.isRagDolled);
         CameraLogic();
     }
+        public float mouseX = 0;
+        public float mouseY = 0;
 
     private void CameraLogic()
     {
-        float mouseX;
-        float mouseY;
+
         if (!headCollider.isUnRagdolledLocal)
         {
             mouseX = GetMouseInput("Mouse X");
             mouseY = GetMouseInput("Mouse Y");
-        }
-        else
-        {
-            mouseX = 0;
-            mouseY = 0;
         }
 
         cinemachineTargetPitch = UpdateRotation(cinemachineTargetPitch, mouseY, bottomClamp, topClamp, true);

@@ -140,7 +140,7 @@ public class RagdollOnOff : MonoBehaviour
     {
         mainCollider.enabled = false;
         // Armature.transform.position = pointToRagdoll.position;
-        Armature.transform.position = Vector3.Lerp(transform.position, pointToRagdoll.position, timeToRagdoll * Time.deltaTime);
+        Armature.transform.position = Vector3.Lerp(transform.position, pointToRagdoll.position, timeToRagdoll);
         Armature.transform.LookAt(lookAtPosition);
         Armature.transform.Rotate(180, 180, 0);
         Armature.transform.position += new Vector3(0, 0.5f, 0);
