@@ -63,14 +63,7 @@ public class PlayerController : MonoBehaviour
         Vector3 velocity = rb.velocity;
         float mass = rb.mass;
         Vector3 momentum = mass * velocity;
-
-
-            Debug.Log("Collision!");
-            Vector3 directionToWall = other.transform.position - transform.position - new Vector3 (0, -7f, 0);
-            Vector3 collisionNormal = directionToWall.normalized;
-
-            Vector3 reflectedVelocity = Vector3.Reflect(rb.velocity, collisionNormal);
-            rb.velocity = reflectedVelocity * forceMultiplier;
+        rb.velocity = new Vector3(-rb.velocity.x, rb.velocity.y * forceMultiplier, -rb.velocity.z);
     }
     private void FixedUpdate()
     {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - arms
+  - default_obstacle
   layers:
   - Default
   - TransparentFX

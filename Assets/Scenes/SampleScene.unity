@@ -306,7 +306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &278200025
 Transform:
   m_ObjectHideFlags: 0
@@ -3146,6 +3146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FurnitureClosed
       objectReference: {fileID: 0}
+    - target: {fileID: 3432853485664002710, guid: 60a26d66a2e38fc47a912e27588dde0a, type: 3}
+      propertyPath: m_TagString
+      value: default_obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4273907849765934718, guid: 60a26d66a2e38fc47a912e27588dde0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.0066185
@@ -3278,6 +3282,10 @@ PrefabInstance:
     - target: {fileID: 5270117881394928212, guid: 5c762dc2aeaa71f47ad12eed0e0e393c, type: 3}
       propertyPath: m_Name
       value: sink
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270117881394928212, guid: 5c762dc2aeaa71f47ad12eed0e0e393c, type: 3}
+      propertyPath: m_TagString
+      value: default_obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3444,7 +3452,7 @@ GameObject:
   - component: {fileID: 3415813930528177203}
   m_Layer: 7
   m_Name: Cube.013
-  m_TagString: Untagged
+  m_TagString: default_obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3686,7 +3694,7 @@ GameObject:
   - component: {fileID: 2646565027730393389}
   m_Layer: 0
   m_Name: Cube.004
-  m_TagString: Untagged
+  m_TagString: default_obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3788,7 +3796,7 @@ GameObject:
   - component: {fileID: 2020553476279369935}
   m_Layer: 0
   m_Name: Cube.025
-  m_TagString: Untagged
+  m_TagString: default_obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4136,6 +4144,10 @@ PrefabInstance:
     - target: {fileID: 2032845019806421769, guid: 1a7f0dd487808df4abc0ee38d2424f93, type: 3}
       propertyPath: m_Name
       value: FurnitureUpper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032845019806421769, guid: 1a7f0dd487808df4abc0ee38d2424f93, type: 3}
+      propertyPath: m_TagString
+      value: default_obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 7312107148396485598, guid: 1a7f0dd487808df4abc0ee38d2424f93, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4493,7 +4505,7 @@ GameObject:
   - component: {fileID: 3626709036938363313}
   m_Layer: 7
   m_Name: Cube.015
-  m_TagString: Untagged
+  m_TagString: default_obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4529,6 +4541,10 @@ PrefabInstance:
     - target: {fileID: 43348717245676915, guid: d9f0df13eaae26b4ea0fa051ae06daa9, type: 3}
       propertyPath: m_Name
       value: couch
+      objectReference: {fileID: 0}
+    - target: {fileID: 43348717245676915, guid: d9f0df13eaae26b4ea0fa051ae06daa9, type: 3}
+      propertyPath: m_TagString
+      value: default_obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 7890971536274083302, guid: d9f0df13eaae26b4ea0fa051ae06daa9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4589,7 +4605,7 @@ GameObject:
   - component: {fileID: 7375430164690255234}
   m_Layer: 7
   m_Name: Cube.011
-  m_TagString: Untagged
+  m_TagString: default_obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4963,6 +4979,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stovePan
       objectReference: {fileID: 0}
+    - target: {fileID: 9119400588039224967, guid: 799097d2641abbe4da3feda7077ffcad, type: 3}
+      propertyPath: m_TagString
+      value: default_obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5085,7 +5105,7 @@ GameObject:
   - component: {fileID: 5929386910644547236}
   m_Layer: 0
   m_Name: Cube.006
-  m_TagString: Untagged
+  m_TagString: default_obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
