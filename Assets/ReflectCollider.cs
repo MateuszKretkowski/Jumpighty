@@ -18,6 +18,11 @@ public class ReflectCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        playerController.reflectForce(other);
+        switch (other.gameObject.tag)
+        {
+            case "Trampoline":
+                playerController.reflectForce(other, 15f);
+                break;
+        }
     }
 }
