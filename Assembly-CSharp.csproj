@@ -61,18 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\FallCollider.cs" />
-    <Compile Include="Assets\RagdollOnOff.cs" />
-    <Compile Include="Assets\Scripts\SinkOnCollision.cs" />
     <Compile Include="Assets\Scripts\FollowTarget.cs" />
-    <Compile Include="Assets\FollowTargetScript.cs" />
-    <Compile Include="Assets\Scripts\HandScript.cs" />
-    <Compile Include="Assets\ReflectCollider.cs" />
     <Compile Include="Assets\Scripts\addMeshColliders.cs" />
-    <Compile Include="Assets\Scripts\PixelateMaterial.cs" />
-    <Compile Include="Assets\Scripts\ArmsScript.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\HeadCollider.cs" />
-    <Compile Include="Assets\couch.cs" />
+    <Compile Include="Assets\Scripts\RagdollOnOff.cs" />
+    <Compile Include="Assets\Scripts\ReflectCollider.cs" />
+    <Compile Include="Assets\Scripts\HeadCollider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

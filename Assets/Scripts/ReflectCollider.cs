@@ -5,7 +5,7 @@ using UnityEngine;
 public class ReflectCollider : MonoBehaviour
 {
 
-    public PlayerController playerController;
+    // public PlayerController playerController;
     void Start()
     {
         
@@ -21,10 +21,10 @@ public class ReflectCollider : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "default_obstacle":
-                playerController.reflectForce(other, 1.5f);
+                // playerController.reflectForce(other, 1.5f);
                 break;
             case "Trampoline":
-                playerController.reflectForce(other, 15f);
+                // playerController.reflectForce(other, 15f);
                 break;
         }
     }
