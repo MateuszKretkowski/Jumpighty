@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class RagdollOnOff : MonoBehaviour
 {
-    public BoxCollider mainCollider;
+    // public BoxCollider mainCollider;
     public GameObject armatureRoot;
     public Rigidbody rb;
 
@@ -44,6 +44,7 @@ public class RagdollOnOff : MonoBehaviour
     Quaternion[] initialRotations;
     BoxCollider[] ragDollColliders;
     Rigidbody[] ragDollRigidbodies;
+    public Animator animator;
     void GetRagdollBits()
     {
         bones = armatureRoot.GetComponentsInChildren<Transform>(true);
@@ -91,6 +92,7 @@ public class RagdollOnOff : MonoBehaviour
         //mainCollider.enabled = false;
         // rb.isKinematic = true;
         // rb.useGravity = false;
+        animator.enabled = false;
         rb.AddForce(Vector3.back * 10f, ForceMode.Impulse);
         foreach(Collider col in ragDollColliders)
         {
@@ -109,7 +111,7 @@ public class RagdollOnOff : MonoBehaviour
 
     public void RagdollModeOff()
     {
-
+        animator.enabled = true;
         TransformToPreviousPosition();
 
         if (!isFirstTime)
@@ -128,7 +130,8 @@ public class RagdollOnOff : MonoBehaviour
         foreach (Rigidbody rb in ragDollRigidbodies)
         {
             rb.isKinematic = true;
-            rb.useGravity = false;  
+            rb.useGravity = false;
+            Debug.Log("RB: " + rb.gameObject.name);
         }
     }
 
@@ -138,13 +141,13 @@ public class RagdollOnOff : MonoBehaviour
     public float timeToRagdoll;
     public void TransformToPreviousPosition()
     {
-        mainCollider.enabled = false;
+        // mainCollider.enabled = false;
         // Armature.transform.position = pointToRagdoll.position;
         Armature.transform.position = Vector3.Lerp(transform.position, pointToRagdoll.position, timeToRagdoll);
         Armature.transform.LookAt(lookAtPosition);
         Armature.transform.Rotate(180, 180, 0);
         Armature.transform.position += new Vector3(0, 0.5f, 0);
-        mainCollider.enabled = true;
+        // mainCollider.enabled = true;
     }
 
 }
