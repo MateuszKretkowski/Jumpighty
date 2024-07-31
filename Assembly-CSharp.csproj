@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\FallCollider.cs" />
+    <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\Scripts\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\addMeshColliders.cs" />
     <Compile Include="Assets\Scripts\RagdollOnOff.cs" />

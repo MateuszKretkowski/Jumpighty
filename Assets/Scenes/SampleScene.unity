@@ -673,7 +673,6 @@ GameObject:
   - component: {fileID: 810982765}
   - component: {fileID: 810982764}
   - component: {fileID: 810982763}
-  - component: {fileID: 810982766}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -779,7 +778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810982762}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4465512, y: -0.16208827, z: 0.08262007, w: 0.876067}
+  m_LocalRotation: {x: 0.1805708, y: -0.0039341543, z: 0.0007222719, w: 0.9835539}
   m_LocalPosition: {x: 0.04000001, y: 4.356, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -788,36 +787,6 @@ Transform:
   - {fileID: 1416793509}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &810982766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810982762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CollideAgainst:
-    serializedVersion: 2
-    m_Bits: 1
-  m_IgnoreTag: 
-  m_TransparentLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_MinimumDistanceFromTarget: 0.1
-  m_AvoidObstacles: 1
-  m_DistanceLimit: 0
-  m_MinimumOcclusionTime: 0
-  m_CameraRadius: 0.1
-  m_Strategy: 1
-  m_MaximumEffort: 4
-  m_SmoothingTime: 0
-  m_Damping: 0
-  m_DampingWhenOccluded: 0
-  m_OptimalTargetDistance: 0
 --- !u!1 &940127369
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,8 +846,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940127369}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4465512, y: -0.16208827, z: 0.08262007, w: 0.876067}
-  m_LocalPosition: {x: 0.49357712, y: 4.356, z: -0.28820133}
+  m_LocalRotation: {x: 0.1805708, y: -0.0039341543, z: 0.0007222719, w: 0.9835539}
+  m_LocalPosition: {x: 0.04000001, y: 4.356, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1742,8 +1711,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2044054676}
   - component: {fileID: 2044054679}
+  - component: {fileID: 2044054682}
   - component: {fileID: 2044054677}
   - component: {fileID: 2044054680}
+  - component: {fileID: 2044054683}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1809,10 +1780,10 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 0
+  m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 112
   m_CollisionDetection: 1
@@ -1836,6 +1807,45 @@ MonoBehaviour:
   pointToRagdoll: {fileID: 1770018165}
   lookAtPosition: {fileID: 1955462861}
   timeToRagdoll: 5
+--- !u!114 &2044054682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044054675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778eee0aa82404f40ab324fbf67e71f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6798676202676289582}
+  isPreparing: 0
+  canJump: 0
+  force: 0
+  maxForce: 80
+  minForce: 40
+--- !u!65 &2044054683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044054675}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.69095963, y: 0.51890707, z: 0.641436}
+  m_Center: {x: 0.056124598, y: -1.8739209, z: 0.6766836}
 --- !u!33 &96995067798976615
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1952,7 +1962,7 @@ GameObject:
   - component: {fileID: 5031373256186585980}
   m_Layer: 7
   m_Name: Cube
-  m_TagString: Floor
+  m_TagString: default_obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2618,7 +2628,7 @@ GameObject:
   - component: {fileID: 8400075199020325958}
   - component: {fileID: 3633103458629797335}
   m_Layer: 0
-  m_Name: Cube.001
+  m_Name: pogo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3652,8 +3662,9 @@ GameObject:
   - component: {fileID: 1336019260714720578}
   - component: {fileID: 7695879854501168589}
   - component: {fileID: 2911395223262324592}
+  - component: {fileID: 7695879854501168590}
   m_Layer: 0
-  m_Name: Cube.002
+  m_Name: stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5073,9 +5084,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2379436654453991382}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -1.4366369, y: -0.7839117, z: -0.55416405}
-  m_LocalScale: {x: 9.528663, y: 9.886612, z: 56.603367}
+  m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.70710677}
+  m_LocalPosition: {x: -1.4366372, y: -0.7839114, z: 0}
+  m_LocalScale: {x: 9.528663, y: 9.88661, z: 56.60335}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1336019260714720578}
@@ -5351,6 +5362,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4470773166589648563}
   m_Mesh: {fileID: -1550514412580984892, guid: 2aee84dfa69c5e044a09a7294bb6ad08, type: 3}
+--- !u!65 &7695879854501168590
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470773166589648563}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02585979, y: 0.025859797, z: 0.021684917}
+  m_Center: {x: -0.000000029802322, y: 1.1641379e-10, z: -0.00084246154}
 --- !u!1 &7857015225898758800
 GameObject:
   m_ObjectHideFlags: 0
