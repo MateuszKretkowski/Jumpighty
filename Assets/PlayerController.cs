@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
                 pogoAniamtor.SetTrigger("pogo_jumpTrigger");
 
                 animator.ResetTrigger("landTrigger");
+                animator.ResetTrigger("landDeepTrigger");
                 animator.SetTrigger("jumpTrigger");
                 rb.AddForce(Vector3.up * force, ForceMode.Impulse);
                 force = minForce;
@@ -48,6 +49,9 @@ public class PlayerController : MonoBehaviour
         if (isPreparing && canJump)
         {
             if (force < maxForce) force += 1;
+            animator.ResetTrigger("landTrigger");
+            animator.SetTrigger("landDeepTrigger");
+
             pogoAniamtor.ResetTrigger("pogo_jumpTrigger");
             pogoAniamtor.SetTrigger("pogo_landTrigger");
         }
@@ -88,10 +92,11 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         if (!isPreparing && canJump)
         {
+            animator.ResetTrigger("landTrigger");
+            animator.ResetTrigger("landDeepTrigger");
+            animator.SetTrigger("jumpTrigger");
             pogoAniamtor.ResetTrigger("pogo_landTrigger");
             pogoAniamtor.SetTrigger("pogo_jumpTrigger");
-            animator.ResetTrigger("landTrigger");
-            animator.SetTrigger("jumpTrigger");
             rb.AddForce(Vector3.up * minForce, ForceMode.Impulse);
             force = minForce;
             canJump = false;
