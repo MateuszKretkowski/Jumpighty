@@ -17,6 +17,9 @@ public class FollowTarget : MonoBehaviour
     public GameObject headColliderObject;
     HeadCollider headCollider;
 
+    public GameObject rotationObject;
+    public PlayerController controller;
+
     void Start()
     {
         cinemachineTargetPitch = 0f;
@@ -50,6 +53,11 @@ public class FollowTarget : MonoBehaviour
     private void ApplyRotations(float pitch, float yaw)
     {
         followTarget.rotation = Quaternion.Euler(pitch, yaw, followTarget.eulerAngles.z);
+
+        if (!controller.hasRotated)
+        {
+            rotationObject.transform.rotation = Quaternion.Euler(0, yaw, 0);
+        }
     }
 
     private float UpdateRotation(float currentRotation, float input, float min, float max, bool isXAxis)

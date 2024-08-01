@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,18 +13,27 @@ public class PlayerController : MonoBehaviour
     public bool isPreparing;
     public bool canJump;
 
+    public Transform rotationObject;
+    public float rotationTimeMax;
+    public float rotationTime;
+    public bool hasRotated;
+
+    [SerializeField] float rotationForce;
+
     [SerializeField] float force;
     [SerializeField] float maxForce;
     [SerializeField] float minForce;
 
     void Start()
     {
+        hasRotated = true;
         rb = GetComponent<Rigidbody>();
         force = minForce;
     }
 
     void Update()
     {
+
         if (Input.GetKey(KeyCode.Space) && canJump) isPreparing = true;
 
         if (isPreparing && canJump)
@@ -42,12 +52,29 @@ public class PlayerController : MonoBehaviour
                 canJump = false;
             }
         }
+
+        if (rotationTime >= rotationTimeMax)
+        {
+            hasRotated = true;
+        } 
     }
 
     private void FixedUpdate()
     {
+        if (!canJump && !hasRotated)
+        {
+            Transform targetTransform = rotationObject.transform;
+            Vector3 direction = targetTransform.position - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            float rotationSpeed = 2.0f;
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+
+            if (rotationTime < rotationTimeMax) rotationTime += 1f;
+        }
+
         if (isPreparing && canJump)
         {
+
             if (force < maxForce) force += 1;
             animator.ResetTrigger("landTrigger");
             animator.SetTrigger("landDeepTrigger");
@@ -72,6 +99,8 @@ public class PlayerController : MonoBehaviour
             pogoAniamtor.SetTrigger("pogo_landTrigger");
 
             canJump = true;
+            hasRotated = false;
+            rotationTime = 0f;
             StartCoroutine(JumpCaller());
         }
     }
@@ -101,5 +130,10 @@ public class PlayerController : MonoBehaviour
             force = minForce;
             canJump = false;
         }
+    }
+
+    private float GetMouseInput(string axis)
+    {
+        return Input.GetAxis(axis) * rotationForce * Time.deltaTime;
     }
 }
