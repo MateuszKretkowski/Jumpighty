@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
             pogoAniamtor.ResetTrigger("pogo_jumpTrigger");
             pogoAniamtor.SetTrigger("pogo_landTrigger");
         }
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < -1)
         {
             animator.SetTrigger("landTrigger");
             animator.ResetTrigger("jumpTrigger");
