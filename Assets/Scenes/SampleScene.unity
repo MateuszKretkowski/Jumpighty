@@ -204,7 +204,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -244,7 +244,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -265,7 +265,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -787,6 +787,61 @@ Transform:
   - {fileID: 1416793509}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &930755760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 930755761}
+  - component: {fileID: 930755762}
+  m_Layer: 8
+  m_Name: pogo_go
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &930755761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930755760}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7023508927548046955}
+  - {fileID: 1336019260714720578}
+  m_Father: {fileID: 6798676202676289581}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &930755762
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930755760}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7430e7a65d75e4c498b78ed901f705ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &940127369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,6 +1875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6798676202676289582}
+  pogoAniamtor: {fileID: 930755762}
   isPreparing: 0
   canJump: 0
   force: 0
@@ -2228,12 +2284,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4470773166589648563}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000000009536743, y: 0.00029507637, z: -0.04844674}
-  m_LocalScale: {x: 0.883238, y: 0.8512599, z: 2.1847613}
+  m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.70710665}
+  m_LocalPosition: {x: -1.4366374, y: -3.52616, z: -0.0029160972}
+  m_LocalScale: {x: 8.416077, y: 8.416076, z: 123.664856}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7023508927548046955}
+  m_Father: {fileID: 930755761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1395003671070768254
 Transform:
@@ -2627,7 +2683,7 @@ GameObject:
   - component: {fileID: 7023508927548046955}
   - component: {fileID: 8400075199020325958}
   - component: {fileID: 3633103458629797335}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pogo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3663,7 +3719,7 @@ GameObject:
   - component: {fileID: 7695879854501168589}
   - component: {fileID: 2911395223262324592}
   - component: {fileID: 7695879854501168590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4267,7 +4323,7 @@ Transform:
   m_Children:
   - {fileID: 2262511657068720183}
   - {fileID: 7649391928610462536}
-  - {fileID: 7023508927548046955}
+  - {fileID: 930755761}
   m_Father: {fileID: 278200025}
   m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
 --- !u!95 &6798676202676289582
@@ -5084,13 +5140,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2379436654453991382}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.70710677}
-  m_LocalPosition: {x: -1.4366372, y: -0.7839114, z: 0}
-  m_LocalScale: {x: 9.528663, y: 9.88661, z: 56.60335}
+  m_LocalRotation: {x: -0.70710695, y: -0, z: -0, w: 0.70710677}
+  m_LocalPosition: {x: -1.436637, y: -0.7839114, z: 0}
+  m_LocalScale: {x: 9.528663, y: 9.886608, z: 56.60335}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1336019260714720578}
-  m_Father: {fileID: 6798676202676289581}
+  m_Children: []
+  m_Father: {fileID: 930755761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7106360997621182271
 GameObject:

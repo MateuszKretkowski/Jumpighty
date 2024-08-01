@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     public Animator animator;
+    public Animator pogoAniamtor;
 
     public bool isPreparing;
     public bool canJump;
@@ -29,6 +30,9 @@ public class PlayerController : MonoBehaviour
         {
             if (!Input.GetKey(KeyCode.Space))
             {
+                pogoAniamtor.ResetTrigger("pogo_landTrigger");
+                pogoAniamtor.SetTrigger("pogo_jumpTrigger");
+
                 animator.ResetTrigger("landTrigger");
                 animator.SetTrigger("jumpTrigger");
                 rb.AddForce(Vector3.up * force, ForceMode.Impulse);
@@ -44,6 +48,8 @@ public class PlayerController : MonoBehaviour
         if (isPreparing && canJump)
         {
             if (force < maxForce) force += 1;
+            pogoAniamtor.ResetTrigger("pogo_jumpTrigger");
+            pogoAniamtor.SetTrigger("pogo_landTrigger");
         }
         if (rb.velocity.y < 0)
         {
@@ -57,6 +63,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "default_obstacle")
         {
             Debug.Log("triggerenter");
+
+            pogoAniamtor.ResetTrigger("pogo_jumpTrigger");
+            pogoAniamtor.SetTrigger("pogo_landTrigger");
+
             canJump = true;
             StartCoroutine(JumpCaller());
         }
@@ -75,9 +85,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator JumpCaller()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         if (!isPreparing && canJump)
         {
+            pogoAniamtor.ResetTrigger("pogo_landTrigger");
+            pogoAniamtor.SetTrigger("pogo_jumpTrigger");
             animator.ResetTrigger("landTrigger");
             animator.SetTrigger("jumpTrigger");
             rb.AddForce(Vector3.up * minForce, ForceMode.Impulse);
