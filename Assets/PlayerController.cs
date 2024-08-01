@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
         {
             if (!Input.GetKey(KeyCode.Space))
             {
+                animator.ResetTrigger("landTrigger");
+                animator.SetTrigger("jumpTrigger");
                 rb.AddForce(Vector3.up * force, ForceMode.Impulse);
                 force = minForce;
                 isPreparing = false;
@@ -43,13 +45,18 @@ public class PlayerController : MonoBehaviour
         {
             if (force < maxForce) force += 1;
         }
+        if (rb.velocity.y < 0)
+        {
+            animator.SetTrigger("landTrigger");
+            animator.ResetTrigger("jumpTrigger");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "default_obstacle")
         {
-            animator.SetInteger("jumpingInt", 1);
+            Debug.Log("triggerenter");
             canJump = true;
             StartCoroutine(JumpCaller());
         }
@@ -59,7 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "default_obstacle")
         {
-            animator.SetInteger("jumpingInt", -1);
+            Debug.Log("triggerex");
             canJump = false;
         }
     }
@@ -71,6 +78,8 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         if (!isPreparing && canJump)
         {
+            animator.ResetTrigger("landTrigger");
+            animator.SetTrigger("jumpTrigger");
             rb.AddForce(Vector3.up * minForce, ForceMode.Impulse);
             force = minForce;
             canJump = false;
