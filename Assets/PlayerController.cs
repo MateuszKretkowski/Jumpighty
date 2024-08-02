@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
         }
         if (rb.velocity.y < -1)
         {
-            animator.SetTrigger("landTrigger");
+            animator.SetTrigger("fallTrigger");
             animator.ResetTrigger("jumpTrigger");
         }
     }
@@ -97,6 +97,10 @@ public class PlayerController : MonoBehaviour
 
             pogoAniamtor.ResetTrigger("pogo_jumpTrigger");
             pogoAniamtor.SetTrigger("pogo_landTrigger");
+
+            animator.ResetTrigger("fallTrigger");
+            animator.SetTrigger("landTrigger");
+
 
             canJump = true;
             hasRotated = false;
