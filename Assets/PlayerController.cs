@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float rotationForce;
 
+    [SerializeField] float rotationSpeed;
     [SerializeField] float downwardsForce;
 
     [SerializeField] float force;
@@ -36,6 +37,21 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        if (horizontalInput != 0)
+        {
+            Quaternion deltaRotation = Quaternion.Euler(0f, horizontalInput * rotationSpeed, 0f);
+            transform.rotation = transform.rotation * deltaRotation;
+        }
+
+        if (verticalInput != 0)
+        {
+            Quaternion deltaRotation = Quaternion.Euler(verticalInput * rotationSpeed, 0f, 0f);
+            transform.rotation = transform.rotation * deltaRotation;
+        }
+
         if (Input.GetKey(KeyCode.Space) && canJump) isPreparing = true;
 
         if (isPreparing && canJump)
@@ -48,7 +64,10 @@ public class PlayerController : MonoBehaviour
                 animator.ResetTrigger("landTrigger");
                 animator.ResetTrigger("landDeepTrigger");
                 animator.SetTrigger("jumpTrigger");
-                rb.AddForce(Vector3.up * force, ForceMode.Impulse);
+
+                Vector3 localUp = transform.TransformDirection(Vector3.up);
+                rb.AddForce(localUp * force, ForceMode.Impulse);
+
                 force = minForce;
                 isPreparing = false;
                 canJump = false;
@@ -108,6 +127,7 @@ public class PlayerController : MonoBehaviour
             animator.ResetTrigger("fallTrigger");
             animator.SetTrigger("landTrigger");
 
+            
 
             canJump = true;
             hasRotated = false;
@@ -137,7 +157,10 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("jumpTrigger");
             pogoAniamtor.ResetTrigger("pogo_landTrigger");
             pogoAniamtor.SetTrigger("pogo_jumpTrigger");
-            rb.AddForce(Vector3.up * minForce, ForceMode.Impulse);
+
+            Vector3 localUp = transform.TransformDirection(Vector3.up);
+            rb.AddForce(localUp * minForce, ForceMode.Impulse);
+            
             force = minForce;
             canJump = false;
         }

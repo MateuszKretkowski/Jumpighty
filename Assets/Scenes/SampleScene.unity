@@ -1949,6 +1949,8 @@ MonoBehaviour:
   rotationTime: 0
   hasRotated: 0
   rotationForce: 0
+  rotationSpeed: 5
+  downwardsForce: 25
   force: 0
   maxForce: 80
   minForce: 40
