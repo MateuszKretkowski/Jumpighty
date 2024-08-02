@@ -40,16 +40,19 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        if (horizontalInput != 0)
+        if (!canJump)
         {
-            Quaternion deltaRotation = Quaternion.Euler(0f, horizontalInput * rotationSpeed, 0f);
-            transform.rotation = transform.rotation * deltaRotation;
-        }
+            if (horizontalInput != 0)
+            {
+                Quaternion deltaRotation = Quaternion.Euler(0f, 0f, -horizontalInput * rotationSpeed);
+                transform.rotation = transform.rotation * deltaRotation;
+            }
 
-        if (verticalInput != 0)
-        {
-            Quaternion deltaRotation = Quaternion.Euler(verticalInput * rotationSpeed, 0f, 0f);
-            transform.rotation = transform.rotation * deltaRotation;
+            if (verticalInput != 0)
+            {
+                Quaternion deltaRotation = Quaternion.Euler(verticalInput * rotationSpeed, 0f, 0f);
+                transform.rotation = transform.rotation * deltaRotation;
+            }
         }
 
         if (Input.GetKey(KeyCode.Space) && canJump) isPreparing = true;
@@ -74,7 +77,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < 1)
         {
             rb.AddForce(Vector3.down * downwardsForce);
         }
