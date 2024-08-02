@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float rotationForce;
 
+    [SerializeField] float downwardsForce;
+
     [SerializeField] float force;
     [SerializeField] float maxForce;
     [SerializeField] float minForce;
@@ -51,6 +53,11 @@ public class PlayerController : MonoBehaviour
                 isPreparing = false;
                 canJump = false;
             }
+        }
+
+        if (rb.velocity.y < 0)
+        {
+            rb.AddForce(Vector3.down * downwardsForce);
         }
 
         if (rotationTime >= rotationTimeMax)
