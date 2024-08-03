@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float maxForce;
     [SerializeField] float minForce;
 
+    public HeadCollider headCollider;
+
     void Start()
     {
         hasRotated = true;
@@ -36,6 +38,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        if (headCollider.isUnRagdolledLocal)
+        {
+            canJump = false;
+        }
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -169,8 +176,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private float GetMouseInput(string axis)
+    public void activateJump()
     {
-        return Input.GetAxis(axis) * rotationForce * Time.deltaTime;
+        canJump = true;
     }
 }

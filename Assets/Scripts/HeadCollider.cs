@@ -15,6 +15,7 @@ public class HeadCollider : MonoBehaviour
     public float delay;
 
     public Rigidbody playerRb;
+    public PlayerController playerController;
     void Start()
     {
         hasRagdolled = false;
@@ -40,10 +41,10 @@ public class HeadCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag != "Player" && delay == 0 && playerRb.velocity.magnitude > 20f)
+        if (collision.gameObject.layer != 6 && delay == 0 && playerRb.velocity.magnitude > 5f)
         {
             ragdollOnOff.RagdollModeOn();
-
+            Debug.Log(collision.gameObject.layer);
             hasRagdolled = true;
             isUnRagdolledLocal = true;
         }
@@ -53,6 +54,7 @@ public class HeadCollider : MonoBehaviour
     {
         yield return new WaitForSeconds(4);
         ragdollOnOff.RagdollModeOff();
+        playerController.activateJump();
         ragdollOnOff.TransformToPreviousPosition();
         isUnRagdolledLocal = false;
         delay = delayTime;

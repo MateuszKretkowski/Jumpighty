@@ -163,13 +163,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 278200025}
-  - component: {fileID: 278200027}
   - component: {fileID: 278200028}
   - component: {fileID: 278200031}
   - component: {fileID: 278200030}
   m_Layer: 6
   m_Name: HeadCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,27 +189,6 @@ Transform:
   - {fileID: 6798676202676289581}
   m_Father: {fileID: 302378863}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!65 &278200027
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278200024}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.08965963, y: 0.6553787, z: 1}
-  m_Center: {x: -1, y: -0.26587075, z: 0}
 --- !u!114 &278200028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +208,7 @@ MonoBehaviour:
   delayTime: 4
   delay: 0
   playerRb: {fileID: 2044054679}
+  playerController: {fileID: 2044054682}
 --- !u!65 &278200030
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -249,8 +228,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.12984255, y: 0.58000255, z: 1}
-  m_Center: {x: 1, y: -0.20999873, z: 0}
+  m_Size: {x: 0.17077024, y: 1.0442462, z: 1}
+  m_Center: {x: 0.43205503, y: -0.36382398, z: -9.655574e-16}
 --- !u!65 &278200031
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -270,8 +249,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.1403408, z: 1}
-  m_Center: {x: 0, y: -1, z: 0}
+  m_Size: {x: 0.96722364, y: 0.90033007, z: 1}
+  m_Center: {x: -0.016388204, y: -1.379995, z: -1.08457275e-17}
 --- !u!1 &283737180
 GameObject:
   m_ObjectHideFlags: 3
@@ -1934,11 +1913,12 @@ MonoBehaviour:
   rotationTime: 0
   hasRotated: 0
   rotationForce: 0
-  rotationSpeed: 5
+  rotationSpeed: 8
   downwardsForce: 25
   force: 0
   maxForce: 80
   minForce: 40
+  headCollider: {fileID: 278200028}
 --- !u!65 &2044054683
 BoxCollider:
   m_ObjectHideFlags: 0
