@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!canJump && !hasRotated)
+        if (!canJump && !hasRotated && !headCollider.isUnRagdolledLocal)
         {
             Transform targetTransform = rotationObject.transform;
             Vector3 direction = targetTransform.position - transform.position;

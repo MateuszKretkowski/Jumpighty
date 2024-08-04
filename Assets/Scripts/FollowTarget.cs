@@ -38,11 +38,8 @@ public class FollowTarget : MonoBehaviour
     private void CameraLogic()
     {
 
-        if (!headCollider.isUnRagdolledLocal)
-        {
             mouseX = GetMouseInput("Mouse X");
             mouseY = GetMouseInput("Mouse Y");
-        }
 
         cinemachineTargetPitch = UpdateRotation(cinemachineTargetPitch, mouseY, bottomClamp, topClamp, true);
         cinemachineTargetYaw = UpdateRotation(cinemachineTargetYaw, mouseX, float.MinValue, float.MaxValue, false);
