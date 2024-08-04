@@ -65,8 +65,10 @@
     <Compile Include="Assets\Scripts\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\addMeshColliders.cs" />
     <Compile Include="Assets\Scripts\RagdollOnOff.cs" />
+    <Compile Include="Assets\PlayerControllerPogo.cs" />
     <Compile Include="Assets\Scripts\ReflectCollider.cs" />
     <Compile Include="Assets\Scripts\HeadCollider.cs" />
+    <Compile Include="Assets\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

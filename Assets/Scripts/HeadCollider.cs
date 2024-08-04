@@ -15,7 +15,7 @@ public class HeadCollider : MonoBehaviour
     public float delay;
 
     public Rigidbody playerRb;
-    public PlayerController playerController;
+    public PlayerControllerPogo playerControllerPogo;
     void Start()
     {
         hasRagdolled = false;
@@ -54,7 +54,7 @@ public class HeadCollider : MonoBehaviour
     {
         yield return new WaitForSeconds(4);
         ragdollOnOff.RagdollModeOff();
-        playerController.activateJump();
+        playerControllerPogo.activateJump();
         ragdollOnOff.TransformToPreviousPosition();
         isUnRagdolledLocal = false;
         delay = delayTime;

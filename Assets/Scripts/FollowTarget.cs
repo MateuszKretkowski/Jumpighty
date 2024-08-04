@@ -18,7 +18,7 @@ public class FollowTarget : MonoBehaviour
     HeadCollider headCollider;
 
     public GameObject rotationObject;
-    public PlayerController controller;
+    public PlayerControllerPogo controller;
 
     void Start()
     {
