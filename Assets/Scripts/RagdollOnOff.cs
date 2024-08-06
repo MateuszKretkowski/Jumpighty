@@ -112,7 +112,6 @@ public class RagdollOnOff : MonoBehaviour
     public void RagdollModeOff()
     {
         animator.enabled = true;
-        TransformToPreviousPosition();
 
         if (!isFirstTime)
         {
@@ -140,10 +139,10 @@ public class RagdollOnOff : MonoBehaviour
     public Transform lookAtPosition;
     public float timeToRagdoll;
     public float forceRagdoll;
+    public Transform targetTransform;
     public void TransformToPreviousPosition()
     {
         transform.rotation = Quaternion.EulerRotation(0f, 0f, 0f);
-        //rb.AddForce(Vector3.up * forceRagdoll, ForceMode.Impulse);
     }
 
 }

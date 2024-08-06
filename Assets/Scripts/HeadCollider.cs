@@ -14,6 +14,10 @@ public class HeadCollider : MonoBehaviour
     public float delayTime = 4f;
     public float delay;
 
+    public float delayRagdoll;
+    public float delayRagdollTime = 3f;
+    public bool canRunTime;
+
     public Rigidbody playerRb;
     public PlayerControllerPogo playerControllerPogo;
     void Start()
@@ -39,6 +43,22 @@ public class HeadCollider : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (playerRb.velocity.y < 0.5f)
+        {
+            canRunTime = true;
+        }
+        else
+        {
+            canRunTime = false;
+        }
+        if (canRunTime && delayRagdoll > 0)
+        {
+            delayRagdoll -= Time.deltaTime;
+        }
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.layer != 6 && delay == 0)
@@ -46,7 +66,11 @@ public class HeadCollider : MonoBehaviour
             ragdollOnOff.RagdollModeOn();
             Debug.Log(collision.gameObject.layer);
             hasRagdolled = true;
-            isUnRagdolledLocal = true;
+            isRagDolled = true;
+            if (delayRagdoll <= 0)
+            {
+                isUnRagdolledLocal = true;
+            }
         }
     }
 
@@ -57,6 +81,7 @@ public class HeadCollider : MonoBehaviour
         ragdollOnOff.RagdollModeOff();
         playerControllerPogo.activateJump();
         ragdollOnOff.TransformToPreviousPosition();
+        isRagDolled = false;
         isUnRagdolledLocal = false;
         delay = delayTime;
     }

@@ -122,6 +122,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &75903855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 75903856}
+  m_Layer: 6
+  m_Name: upper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &75903856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75903855}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.87, z: 0.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2044054676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &258873123
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +238,9 @@ MonoBehaviour:
   isUnRagdolledLocal: 0
   delayTime: 4
   delay: 0
+  delayRagdoll: 0
+  delayRagdollTime: 0
+  canRunTime: 0
   playerRb: {fileID: 2044054679}
   playerControllerPogo: {fileID: 2044054682}
 --- !u!65 &278200030
@@ -743,7 +777,7 @@ Transform:
   m_GameObject: {fileID: 810982762}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1805708, y: -0.0039341543, z: 0.0007222719, w: 0.9835539}
-  m_LocalPosition: {x: 0.040000137, y: 4.356, z: -3.9999998}
+  m_LocalPosition: {x: 0.040000137, y: 5.448, z: -3.9999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -910,7 +944,7 @@ Transform:
   m_GameObject: {fileID: 940127369}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1805708, y: -0.0039341543, z: 0.0007222719, w: 0.9835539}
-  m_LocalPosition: {x: 0.040000137, y: 4.356, z: -3.9999998}
+  m_LocalPosition: {x: 0.040000137, y: 5.448, z: -3.9999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1472,7 +1506,7 @@ Transform:
   m_GameObject: {fileID: 1666826018}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.092, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1864,6 +1898,7 @@ Transform:
   m_Children:
   - {fileID: 1154488432}
   - {fileID: 1770018165}
+  - {fileID: 75903856}
   - {fileID: 1830172528}
   - {fileID: 1666826019}
   m_Father: {fileID: 0}
@@ -1936,6 +1971,8 @@ MonoBehaviour:
   pointToRagdoll: {fileID: 1770018165}
   lookAtPosition: {fileID: 1955462861}
   timeToRagdoll: 5
+  forceRagdoll: 0
+  targetTransform: {fileID: 75903856}
 --- !u!114 &2044054682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2003,8 +2040,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.32386184, y: 0.23457241, z: 0.3665799}
-  m_Center: {x: 0.030975282, y: -1.9451518, z: 0.65490276}
+  m_Size: {x: 0.32386184, y: 0.42645717, z: 0.36443138}
+  m_Center: {x: 0.030975282, y: -0.84406936, z: 0.7234968}
 --- !u!33 &96995067798976615
 MeshFilter:
   m_ObjectHideFlags: 0

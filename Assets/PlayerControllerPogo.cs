@@ -47,7 +47,7 @@ public class PlayerControllerPogo : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        if (!canJump && !headCollider.isUnRagdolledLocal)
+        if (!canJump && !headCollider.isRagDolled)
         {
             if (horizontalInput != 0)
             {
@@ -97,7 +97,7 @@ public class PlayerControllerPogo : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!canJump && !hasRotated && !headCollider.isUnRagdolledLocal)
+        if (!canJump && !hasRotated && !headCollider.isRagDolled)
         {
             Transform targetTransform = rotationObject.transform;
             Vector3 direction = targetTransform.position - transform.position;
