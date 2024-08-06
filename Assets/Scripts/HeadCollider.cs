@@ -41,7 +41,7 @@ public class HeadCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.layer != 6 && delay == 0 && playerRb.velocity.magnitude > 5f)
+        if (collision.gameObject.layer != 6 && delay == 0)
         {
             ragdollOnOff.RagdollModeOn();
             Debug.Log(collision.gameObject.layer);
