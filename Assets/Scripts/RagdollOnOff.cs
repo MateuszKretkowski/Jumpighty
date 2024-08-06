@@ -139,15 +139,11 @@ public class RagdollOnOff : MonoBehaviour
     public Transform pointToRagdoll;
     public Transform lookAtPosition;
     public float timeToRagdoll;
+    public float forceRagdoll;
     public void TransformToPreviousPosition()
     {
-        // mainCollider.enabled = false;
-        // Armature.transform.position = pointToRagdoll.position;
-        Armature.transform.position = Vector3.Lerp(transform.position, pointToRagdoll.position, timeToRagdoll);
-        Armature.transform.LookAt(lookAtPosition);
-        Armature.transform.Rotate(180, 180, 0);
-        Armature.transform.position += new Vector3(0, 0.5f, 0);
-        // mainCollider.enabled = true;
+        transform.rotation = Quaternion.EulerRotation(0f, 0f, 0f);
+        //rb.AddForce(Vector3.up * forceRagdoll, ForceMode.Impulse);
     }
 
 }
