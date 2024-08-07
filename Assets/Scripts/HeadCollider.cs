@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HeadCollider : MonoBehaviour
@@ -18,12 +19,15 @@ public class HeadCollider : MonoBehaviour
     public float delayRagdollTime = 3f;
     public bool canRunTime;
 
+    bool once;
+
     public Rigidbody playerRb;
     public PlayerControllerPogo playerControllerPogo;
     void Start()
     {
         hasRagdolled = false;
         isUnRagdolledLocal = false;
+        once = false;
     }
 
     // Update is called once per frame
@@ -39,7 +43,10 @@ public class HeadCollider : MonoBehaviour
         }
         if (isUnRagdolledLocal)
         {
-            StartCoroutine(OnRagdollOff());
+            if (!once)
+            {
+                StartCoroutine(OnRagdollOff());
+            }
         }
     }
 
@@ -76,6 +83,7 @@ public class HeadCollider : MonoBehaviour
 
     IEnumerator OnRagdollOff()
     {
+        once = true;
         yield return new WaitForSeconds(4);
         isUnRagdolledLocal = false;
         ragdollOnOff.RagdollModeOff();
@@ -83,6 +91,7 @@ public class HeadCollider : MonoBehaviour
         isRagDolled = false;
         isUnRagdolledLocal = false;
         delay = delayTime;
+        once = false;
     }
 
 

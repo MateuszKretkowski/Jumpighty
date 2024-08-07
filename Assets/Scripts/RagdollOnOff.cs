@@ -143,6 +143,8 @@ public class RagdollOnOff : MonoBehaviour
     public void TransformToPreviousPosition()
     {
         transform.rotation = Quaternion.EulerRotation(0f, 0f, 0f);
+        transform.position += new Vector3(0, 1f, 0);
+        rb.AddForce(Vector3.up * 40f, ForceMode.Impulse);
     }
 
 }
