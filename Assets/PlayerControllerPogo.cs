@@ -99,6 +99,10 @@ public class PlayerControllerPogo : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isGrounded)
+        {
+            WaitAndPerformAction(0.1f);
+        }
         if (!canJump && !hasRotated && !headCollider.isRagDolled)
         {
             Transform targetTransform = rotationObject.transform;
@@ -148,6 +152,14 @@ public class PlayerControllerPogo : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "default_obstacle")
+        {
+            isGrounded = true;
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "default_obstacle")
@@ -162,7 +174,7 @@ public class PlayerControllerPogo : MonoBehaviour
 
     private IEnumerator JumpCaller()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
         if (!isPreparing && canJump)
         {
             animator.ResetTrigger("landTrigger");
@@ -184,7 +196,7 @@ public class PlayerControllerPogo : MonoBehaviour
 
         while (elapsedTime < waitTime)
         {
-            if (isGrounded)
+            if (!isGrounded)
             {
                 yield break;
             }
