@@ -79,7 +79,6 @@ public class HeadCollider : MonoBehaviour
         yield return new WaitForSeconds(4);
         isUnRagdolledLocal = false;
         ragdollOnOff.RagdollModeOff();
-        playerControllerPogo.activateJump();
         ragdollOnOff.TransformToPreviousPosition();
         isRagDolled = false;
         isUnRagdolledLocal = false;
