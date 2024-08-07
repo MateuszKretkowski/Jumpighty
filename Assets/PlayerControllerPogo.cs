@@ -29,6 +29,8 @@ public class PlayerControllerPogo : MonoBehaviour
 
     public HeadCollider headCollider;
 
+    [SerializeField] bool isGrounded;
+
     void Start()
     {
         hasRotated = true;
@@ -137,8 +139,8 @@ public class PlayerControllerPogo : MonoBehaviour
             animator.ResetTrigger("fallTrigger");
             animator.SetTrigger("landTrigger");
 
-            
 
+            isGrounded = true;
             canJump = true;
             hasRotated = false;
             rotationTime = 0f;
@@ -152,6 +154,7 @@ public class PlayerControllerPogo : MonoBehaviour
         {
             Debug.Log("triggerex");
             canJump = false;
+            isGrounded = false;
         }
     }
 
@@ -159,7 +162,7 @@ public class PlayerControllerPogo : MonoBehaviour
 
     private IEnumerator JumpCaller()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         if (!isPreparing && canJump)
         {
             animator.ResetTrigger("landTrigger");
@@ -175,9 +178,27 @@ public class PlayerControllerPogo : MonoBehaviour
             canJump = false;
         }
     }
-
-    public void activateJump()
+    private IEnumerator WaitAndPerformAction(float waitTime)
     {
-        canJump = true;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < waitTime)
+        {
+            if (isGrounded)
+            {
+                yield break;
+            }
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        PerformAction();
+    }
+
+    private void PerformAction()
+    {
+        Vector3 localUp = transform.TransformDirection(Vector3.up);
+        rb.AddForce(localUp * minForce, ForceMode.Impulse);
     }
 }
