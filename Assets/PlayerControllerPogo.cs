@@ -31,8 +31,21 @@ public class PlayerControllerPogo : MonoBehaviour
 
     [SerializeField] bool isGrounded;
 
+    public GameObject land;
+    public GameObject jump;
+    public GameObject hit;
+    public GameObject landing;
+    public GameObject rotating;
+
+    public ParticleSystem landPs;
+    public ParticleSystem jumpPs;
+    public ParticleSystem hitPs;
+    public ParticleSystem landingPs;
+    public ParticleSystem rotatingPs;
+
     void Start()
     {
+        landPs = land.GetComponent<ParticleSystem>();
         hasRotated = true;
         rb = GetComponent<Rigidbody>();
         force = minForce;
@@ -143,6 +156,7 @@ public class PlayerControllerPogo : MonoBehaviour
             animator.ResetTrigger("fallTrigger");
             animator.SetTrigger("landTrigger");
 
+            landPs.Play();
 
             isGrounded = true;
             canJump = true;
