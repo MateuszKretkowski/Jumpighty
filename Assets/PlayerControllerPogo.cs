@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.ParticleSystem;
 
 public class PlayerControllerPogo : MonoBehaviour
 {
@@ -46,7 +48,6 @@ public class PlayerControllerPogo : MonoBehaviour
     void Start()
     {
         landPs = land.GetComponent<ParticleSystem>();
-        landingPs = landing.GetComponent<ParticleSystem>();
         hasRotated = true;
         rb = GetComponent<Rigidbody>();
         force = minForce;
@@ -110,7 +111,8 @@ public class PlayerControllerPogo : MonoBehaviour
             hasRotated = true;
         } 
     }
-
+    bool isInstantiated;
+    ParticleSystem landingPart;
     private void FixedUpdate()
     {
         if (isGrounded)
@@ -143,14 +145,21 @@ public class PlayerControllerPogo : MonoBehaviour
             animator.SetTrigger("fallTrigger");
             animator.ResetTrigger("jumpTrigger");
         }
-
         if (rb.velocity.y < -10f)
         {
-            landingPs.Play();
+            if (!isInstantiated)
+            {
+                landingPart = Instantiate(landingPs, transform.position, Quaternion.identity);
+                landingPart.transform.SetParent(transform);
+                landingPart.Play();
+                isInstantiated = true;
+            }
         }
         else
         {
-            landingPs.Stop();
+            Destroy(landingPart.gameObject);
+            // landingPs.Stop();
+            isInstantiated = false;
         }
     }
 
