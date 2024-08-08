@@ -173,6 +173,8 @@ public class PlayerControllerPogo : MonoBehaviour
             hasRotated = false;
             rotationTime = 0f;
             StartCoroutine(JumpCaller());
+
+
         }
     }
 
@@ -193,7 +195,6 @@ public class PlayerControllerPogo : MonoBehaviour
             isGrounded = false;
         }
     }
-
 
 
     private IEnumerator JumpCaller()
