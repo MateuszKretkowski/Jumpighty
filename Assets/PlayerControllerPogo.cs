@@ -46,6 +46,7 @@ public class PlayerControllerPogo : MonoBehaviour
     void Start()
     {
         landPs = land.GetComponent<ParticleSystem>();
+        landingPs = landing.GetComponent<ParticleSystem>();
         hasRotated = true;
         rb = GetComponent<Rigidbody>();
         force = minForce;
@@ -141,6 +142,15 @@ public class PlayerControllerPogo : MonoBehaviour
         {
             animator.SetTrigger("fallTrigger");
             animator.ResetTrigger("jumpTrigger");
+        }
+
+        if (rb.velocity.y < -10f)
+        {
+            landingPs.Play();
+        }
+        else
+        {
+            landingPs.Stop();
         }
     }
 
