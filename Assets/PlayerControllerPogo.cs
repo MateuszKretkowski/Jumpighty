@@ -154,15 +154,15 @@ public class PlayerControllerPogo : MonoBehaviour
         {
             if (!isInstantiated)
             {
-                landingPart = Instantiate(landingPs, transform.position, Quaternion.identity);
-                landingPart.transform.SetParent(transform);
-                landingPart.Play();
+                // landingPart = Instantiate(landingPs, transform.position, Quaternion.identity);
+                // landingPart.transform.SetParent(transform);
+                // landingPart.Play();
                 isInstantiated = true;
             }
         }
         else
         {
-            Destroy(landingPart.gameObject);
+            // Destroy(landingPart.gameObject);
             // landingPs.Stop();
             isInstantiated = false;
         }
@@ -181,6 +181,14 @@ public class PlayerControllerPogo : MonoBehaviour
             animator.SetTrigger("landTrigger");
 
             ParticleSystem landParticles = Instantiate(landPs, stickEndPoint.position, Quaternion.identity);
+
+            Renderer objectRenderer = other.GetComponent<MeshRenderer>();
+            Color currentColor = objectRenderer.materials[0].color;
+
+            ParticleSystemRenderer renderer = landParticles.GetComponent<ParticleSystemRenderer>();
+            renderer.material.color = currentColor;
+
+            Debug.Log("Color of the object: " + currentColor);
 
             landParticles.Play();
 
