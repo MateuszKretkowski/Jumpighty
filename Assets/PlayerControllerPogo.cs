@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 using static UnityEngine.ParticleSystem;
@@ -33,21 +34,13 @@ public class PlayerControllerPogo : MonoBehaviour
 
     [SerializeField] bool isGrounded;
 
-    public GameObject land;
-    public GameObject jump;
-    public GameObject hit;
-    public GameObject landing;
-    public GameObject rotating;
-
     public ParticleSystem landPs;
-    public ParticleSystem jumpPs;
-    public ParticleSystem hitPs;
     public ParticleSystem landingPs;
-    public ParticleSystem rotatingPs;
+
+    public Transform stickEndPoint;
 
     void Start()
     {
-        landPs = land.GetComponent<ParticleSystem>();
         hasRotated = true;
         rb = GetComponent<Rigidbody>();
         force = minForce;
@@ -175,7 +168,11 @@ public class PlayerControllerPogo : MonoBehaviour
             animator.ResetTrigger("fallTrigger");
             animator.SetTrigger("landTrigger");
 
-            landPs.Play();
+            ParticleSystem landParticles = Instantiate(landPs, stickEndPoint.position, Quaternion.identity);
+
+            landParticles.Play();
+
+            Destroy(landParticles.gameObject, landParticles.main.duration + landParticles.main.startLifetime.constantMax);
 
             isGrounded = true;
             canJump = true;
