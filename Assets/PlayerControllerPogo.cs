@@ -37,6 +37,8 @@ public class PlayerControllerPogo : MonoBehaviour
     public ParticleSystem landPs;
     public ParticleSystem landingPs;
 
+    public ParticleSystem jumpPs;
+
     public Transform stickEndPoint;
 
     void Start()
@@ -87,6 +89,10 @@ public class PlayerControllerPogo : MonoBehaviour
 
                 Vector3 localUp = transform.TransformDirection(Vector3.up);
                 rb.AddForce(localUp * force, ForceMode.Impulse);
+
+                ParticleSystem jumpParticles = Instantiate(jumpPs, stickEndPoint.position, Quaternion.identity);
+                jumpParticles.Play();
+                Destroy(jumpParticles.gameObject, jumpParticles.main.duration + jumpParticles.main.startLifetime.constantMax);
 
                 force = minForce;
                 isPreparing = false;
@@ -216,7 +222,8 @@ public class PlayerControllerPogo : MonoBehaviour
 
             Vector3 localUp = transform.TransformDirection(Vector3.up);
             rb.AddForce(localUp * minForce, ForceMode.Impulse);
-            
+
+
             force = minForce;
             canJump = false;
         }
