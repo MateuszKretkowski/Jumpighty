@@ -2657,6 +2657,7 @@ MonoBehaviour:
   pogoAniamtor: {fileID: 930755762}
   isPreparing: 0
   canJump: 0
+  isSticked: 0
   rotationObject: {fileID: 1519507326}
   rotationTimeMax: 60
   rotationTime: 0
@@ -2671,6 +2672,7 @@ MonoBehaviour:
   isGrounded: 0
   landPs: {fileID: 7235437696131685032, guid: 18b8e4a4140ad4a47888a3dffdc79346, type: 3}
   landingPs: {fileID: 1762925201165090682, guid: 93989d6a8250fc947b4a95e9f47726d8, type: 3}
+  jumpPs: {fileID: 7235437696131685032, guid: d7df7eec2cc8f9142ba1576344b2468a, type: 3}
   stickEndPoint: {fileID: 803645255}
 --- !u!65 &2044054685
 BoxCollider:
@@ -2824,7 +2826,7 @@ GameObject:
   - component: {fileID: 5031373256186585979}
   - component: {fileID: 3518730479051915172}
   - component: {fileID: 5031373256186585980}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: default_obstacle
   m_Icon: {fileID: 0}
@@ -3333,7 +3335,7 @@ GameObject:
   - component: {fileID: 8745590702997906210}
   - component: {fileID: 6775672986840961641}
   - component: {fileID: 2020553476279369935}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube.025
   m_TagString: default_obstacle
   m_Icon: {fileID: 0}

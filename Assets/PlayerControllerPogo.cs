@@ -15,6 +15,7 @@ public class PlayerControllerPogo : MonoBehaviour
 
     public bool isPreparing;
     public bool canJump;
+    [SerializeField] bool isSticked;
 
     public Transform rotationObject;
     public float rotationTimeMax;
@@ -50,6 +51,10 @@ public class PlayerControllerPogo : MonoBehaviour
 
     void Update()
     {
+        if (isSticked && canJump)
+        {
+            rb.velocity = Vector3.zero;
+        }
 
         if (headCollider.isUnRagdolledLocal)
         {
@@ -97,6 +102,7 @@ public class PlayerControllerPogo : MonoBehaviour
                 force = minForce;
                 isPreparing = false;
                 canJump = false;
+                isSticked = false;
             }
         }
 
@@ -164,7 +170,7 @@ public class PlayerControllerPogo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "default_obstacle")
+        if (other.gameObject.layer == 7)
         {
             Debug.Log("triggerenter");
 
@@ -182,17 +188,19 @@ public class PlayerControllerPogo : MonoBehaviour
 
             isGrounded = true;
             canJump = true;
+            if (other.gameObject.tag == "non_slippery")
+            {
+                isSticked = true;
+            }
             hasRotated = false;
             rotationTime = 0f;
             StartCoroutine(JumpCaller());
-
-
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "default_obstacle")
+        if (other.gameObject.layer == 7)
         {
             isGrounded = true;
         }
@@ -200,11 +208,14 @@ public class PlayerControllerPogo : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "default_obstacle")
+        if (other.gameObject.layer == 7)
         {
-            Debug.Log("triggerex");
             canJump = false;
             isGrounded = false;
+        }
+        if (other.gameObject.tag == "non_slippery")
+        {
+            isSticked = true;
         }
     }
 
@@ -226,6 +237,7 @@ public class PlayerControllerPogo : MonoBehaviour
 
             force = minForce;
             canJump = false;
+            isSticked = false;
         }
     }
     private IEnumerator WaitAndPerformAction(float waitTime)
