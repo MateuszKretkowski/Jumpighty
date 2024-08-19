@@ -71,16 +71,6 @@ public class HeadCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        // Pobierz punkt kontaktu (œrodek obiektu, który wszed³ w kolizjê)
-        Vector3 pos = collision.ClosestPoint(transform.position);
-
-        // Utwórz system cz¹steczek w miejscu uderzenia
-        ParticleSystem particles = Instantiate(hitPs, pos, Quaternion.identity);
-        particles.Play();
-
-        // Zniszcz system cz¹steczek po zakoñczeniu jego dzia³ania
-        Destroy(particles.gameObject, particles.main.duration + particles.main.startLifetime.constantMax);
-
         if (collision.gameObject.layer != 6 && delay == 0)
         {
             ragdollOnOff.RagdollModeOn();

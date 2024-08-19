@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\RagdollOnOff.cs" />
     <Compile Include="Assets\PlayerControllerPogo.cs" />
     <Compile Include="Assets\Scripts\ReflectCollider.cs" />
+    <Compile Include="Assets\HitParticlesScript.cs" />
     <Compile Include="Assets\Scripts\HeadCollider.cs" />
     <Compile Include="Assets\GameManager.cs" />
   </ItemGroup>
