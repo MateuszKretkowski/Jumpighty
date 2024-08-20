@@ -26,6 +26,8 @@ public class HeadCollider : MonoBehaviour
     public PlayerControllerPogo playerControllerPogo;
 
     public ParticleSystem hitPs;
+
+    public GameManager gameManager;
     void Start()
     {
         hasRagdolled = false;
@@ -87,13 +89,16 @@ public class HeadCollider : MonoBehaviour
     {
         once = true;
         yield return new WaitForSeconds(4);
-        isUnRagdolledLocal = false;
-        ragdollOnOff.RagdollModeOff();
-        ragdollOnOff.TransformToPreviousPosition();
-        isRagDolled = false;
-        isUnRagdolledLocal = false;
-        delay = delayTime;
-        once = false;
+        if (gameManager.isCheckPointed)
+        {
+            isUnRagdolledLocal = false;
+            ragdollOnOff.RagdollModeOff();
+            ragdollOnOff.TransformToPreviousPosition();
+            isRagDolled = false;
+            isUnRagdolledLocal = false;
+            delay = delayTime;
+            once = false;
+        }
     }
 
 
