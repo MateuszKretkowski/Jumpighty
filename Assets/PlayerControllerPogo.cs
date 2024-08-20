@@ -96,6 +96,10 @@ public class PlayerControllerPogo : MonoBehaviour
                 rb.AddForce(localUp * force, ForceMode.Impulse);
 
                 ParticleSystem jumpParticles = Instantiate(jumpPs, stickEndPoint.position, Quaternion.identity);
+
+                ParticleSystemRenderer renderer = jumpParticles.GetComponent<ParticleSystemRenderer>();
+                renderer.material.color = currentColor;
+
                 jumpParticles.Play();
                 Destroy(jumpParticles.gameObject, jumpParticles.main.duration + jumpParticles.main.startLifetime.constantMax);
 
@@ -167,7 +171,7 @@ public class PlayerControllerPogo : MonoBehaviour
             isInstantiated = false;
         }
     }
-
+    Color currentColor;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 7)
@@ -183,7 +187,7 @@ public class PlayerControllerPogo : MonoBehaviour
             ParticleSystem landParticles = Instantiate(landPs, stickEndPoint.position, Quaternion.identity);
 
             Renderer objectRenderer = other.GetComponent<MeshRenderer>();
-            Color currentColor = objectRenderer.materials[0].color;
+            currentColor = objectRenderer.materials[0].color;
 
             ParticleSystemRenderer renderer = landParticles.GetComponent<ParticleSystemRenderer>();
             renderer.material.color = currentColor;
