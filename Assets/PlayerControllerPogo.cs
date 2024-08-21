@@ -61,24 +61,6 @@ public class PlayerControllerPogo : MonoBehaviour
             canJump = false;
         }
 
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        if (!canJump && !headCollider.isRagDolled)
-        {
-            if (horizontalInput != 0)
-            {
-                Quaternion deltaRotation = Quaternion.Euler(0f, 0f, -horizontalInput * rotationSpeed);
-                transform.rotation = transform.rotation * deltaRotation;
-            }
-
-            if (verticalInput != 0)
-            {
-                Quaternion deltaRotation = Quaternion.Euler(verticalInput * rotationSpeed, 0f, 0f);
-                transform.rotation = transform.rotation * deltaRotation;
-            }
-        }
-
         if (Input.GetKey(KeyCode.Space) && canJump) isPreparing = true;
 
         if (isPreparing && canJump)
@@ -118,12 +100,38 @@ public class PlayerControllerPogo : MonoBehaviour
         if (rotationTime >= rotationTimeMax)
         {
             hasRotated = true;
-        } 
+        }
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+        if (!canJump && !headCollider.isRagDolled)
+        {
+            if (horizontalInput != 0)
+            {
+                Quaternion deltaRotation = Quaternion.Euler(0f, 0f, -horizontalInput * rotationSpeed);
+                transform.rotation = transform.rotation * deltaRotation;
+            }
+
+            if (verticalInput != 0)
+            {
+                Quaternion deltaRotation = Quaternion.Euler(verticalInput * rotationSpeed, 0f, 0f);
+                transform.rotation = transform.rotation * deltaRotation;
+            }
+
+            // THAT IS A HARD MODE'S ROTATION MODEL; IT IS REALLY HARD.
+
+            // float torqueZ = -horizontalInput * rotationSpeed;
+            // float torqueX = verticalInput * rotationSpeed;
+
+            // rb.AddTorque(transform.right * torqueX + transform.forward * torqueZ);
+        }
     }
+    float horizontalInput;
+    float verticalInput;
     bool isInstantiated;
     ParticleSystem landingPart;
     private void FixedUpdate()
     {
+
         if (isGrounded)
         {
             WaitAndPerformAction(0.1f);
