@@ -89,9 +89,11 @@ public class RagdollOnOff : MonoBehaviour
     // public GameObject[] arms;
     public void RagdollModeOn()
     {
+        bekatafunkcjatodziwwak = false;
         //mainCollider.enabled = false;
-        // rb.isKinematic = true;
-        // rb.useGravity = false;
+        rb.isKinematic = true;
+        rb.useGravity = false;
+
         animator.enabled = false;
         rb.AddForce(Vector3.back * 10f, ForceMode.Impulse);
         foreach(Collider col in ragDollColliders)
@@ -105,14 +107,15 @@ public class RagdollOnOff : MonoBehaviour
         }
         // foreach (GameObject go in arms)
         // {
-            // go.GetComponent<Rigidbody>().AddForce(Vector3.forward * 10f, ForceMode.Impulse);
+        // go.GetComponent<Rigidbody>().AddForce(Vector3.forward * 10f, ForceMode.Impulse);
         // }
     }
 
     public void RagdollModeOff()
     {
         animator.enabled = true;
-
+        rb.isKinematic = true;
+        rb.useGravity = false;
         if (!isFirstTime)
         {
             resetRagdoll();
@@ -132,6 +135,8 @@ public class RagdollOnOff : MonoBehaviour
             rb.useGravity = false;
             Debug.Log("RB: " + rb.gameObject.name);
         }
+        rb.isKinematic = false;
+        rb.useGravity = true;
     }
 
     public GameObject Armature;
@@ -140,11 +145,17 @@ public class RagdollOnOff : MonoBehaviour
     public float timeToRagdoll;
     public float forceRagdoll;
     public Transform targetTransform;
+
+    bool bekatafunkcjatodziwwak;
     public void TransformToPreviousPosition()
     {
-        transform.rotation = Quaternion.EulerRotation(0f, 0f, 0f);
-        transform.position += new Vector3(0, 1f, 0);
-        rb.AddForce(Vector3.up * 40f, ForceMode.Impulse);
+        if (!bekatafunkcjatodziwwak)
+        {
+            transform.rotation = Quaternion.EulerRotation(0f, 0f, 0f);
+            transform.position += new Vector3(0, 1f, 0);
+            rb.AddForce(Vector3.up * 40f, ForceMode.Impulse);
+            bekatafunkcjatodziwwak = true;
+        }
     }
 
 }

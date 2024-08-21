@@ -50,7 +50,7 @@ public class HeadCollider : MonoBehaviour
         {
             if (!once)
             {
-                StartCoroutine(OnRagdollOff());
+                // StartCoroutine(OnRagdollOff());
             }
         }
     }
@@ -85,20 +85,18 @@ public class HeadCollider : MonoBehaviour
             }
         }
     }
-    IEnumerator OnRagdollOff()
+    public IEnumerator OnRagdollOffing()
     {
+        Debug.Log("Onragdoll off is happeinng");
         once = true;
         yield return new WaitForSeconds(4);
-        if (gameManager.isCheckPointed)
-        {
             isUnRagdolledLocal = false;
             ragdollOnOff.RagdollModeOff();
             ragdollOnOff.TransformToPreviousPosition();
-            isRagDolled = false;
+        isRagDolled = false;
             isUnRagdolledLocal = false;
             delay = delayTime;
             once = false;
-        }
     }
 
 

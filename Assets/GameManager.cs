@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
     {
         if (headCollider.isUnRagdolledLocal)
         {
+            if (isCheckPointed)
+            {
+                StartCoroutine(headCollider.OnRagdollOffing());
+            }
             pogo.SetActive(false);
         }
         else
