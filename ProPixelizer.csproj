@@ -61,33 +61,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ProPixelizer\Tools\DitherPatternEditor.cs" />
+    <Compile Include="Assets\ProPixelizer\ExampleAssets\Floating\ProPixelizerExampleFloating.cs" />
+    <Compile Include="Assets\ProPixelizer\Tools\Migration\ProPixelizerMaterialUpdater.cs" />
+    <Compile Include="Assets\ProPixelizer\Tools\Migration\ProPixelizer1_7MaterialUpdater.cs" />
+    <Compile Include="Assets\ProPixelizer\MonoBehaviours\CameraSnapSRPEditor.cs" />
+    <Compile Include="Assets\ProPixelizer\MonoBehaviours\ObjectRenderSnapable.cs" />
+    <Compile Include="Assets\ProPixelizer\ShaderGraph\ProPixelizerBaseGUI.cs" />
+    <Compile Include="Assets\ProPixelizer\SRP\ProPixelizerPixelizationPass.cs" />
+    <Compile Include="Assets\ProPixelizer\ExampleAssets\Randomizer\ProPixelizerMaterialRandomizer.cs" />
+    <Compile Include="Assets\ProPixelizer\SRP\ProPixelizerPass.cs" />
+    <Compile Include="Assets\ProPixelizer\Tools\Package\ProPixelizerPackageImporter.cs" />
+    <Compile Include="Assets\ProPixelizer\MonoBehaviours\CameraRenderSnapable.cs" />
+    <Compile Include="Assets\ProPixelizer\Tools\DitherPattern.cs" />
     <Compile Include="Assets\ProPixelizer\Tools\Package\ProPixelizerDomainReloader.cs" />
     <Compile Include="Assets\ProPixelizer\SRP\ProPixelizerOutlineDetectionPass.cs" />
     <Compile Include="Assets\ProPixelizer\Tools\PaletteEditor.cs" />
     <Compile Include="Assets\ProPixelizer\MonoBehaviours\OutlineControl.cs" />
     <Compile Include="Assets\ProPixelizer\SRP\PixelizedWithOutlineShaderGUI.cs" />
-    <Compile Include="Assets\ProPixelizer\ExampleAssets\Floating\ProPixelizerExampleFloating.cs" />
-    <Compile Include="Assets\ProPixelizer\Tools\Migration\ProPixelizerMaterialUpdater.cs" />
     <Compile Include="Assets\ProPixelizer\MonoBehaviours\CameraSnapSRP.cs" />
     <Compile Include="Assets\ProPixelizer\Tools\Palette.cs" />
     <Compile Include="Assets\ProPixelizer\Tools\SteppedAnimation.cs" />
     <Compile Include="Assets\ProPixelizer\Tools\Package\ProPixelizerVerification.cs" />
-    <Compile Include="Assets\ProPixelizer\Tools\Migration\ProPixelizer1_7MaterialUpdater.cs" />
-    <Compile Include="Assets\ProPixelizer\MonoBehaviours\CameraSnapSRPEditor.cs" />
     <Compile Include="Assets\ProPixelizer\SRP\PixelisationFeature.cs" />
-    <Compile Include="Assets\ProPixelizer\MonoBehaviours\ObjectRenderSnapable.cs" />
-    <Compile Include="Assets\ProPixelizer\ShaderGraph\ProPixelizerBaseGUI.cs" />
-    <Compile Include="Assets\ProPixelizer\SRP\ProPixelizerPixelizationPass.cs" />
     <Compile Include="Assets\ProPixelizer\Tools\Migration\ProPixelizer1_8MaterialUpdater.cs" />
-    <Compile Include="Assets\ProPixelizer\ExampleAssets\Randomizer\ProPixelizerMaterialRandomizer.cs" />
     <Compile Include="Assets\ProPixelizer\MonoBehaviours\AbstractRenderSnapable.cs" />
     <Compile Include="Assets\ProPixelizer\Tools\SteppedAnimationEditor.cs" />
-    <Compile Include="Assets\ProPixelizer\SRP\ProPixelizerPass.cs" />
-    <Compile Include="Assets\ProPixelizer\Tools\Package\ProPixelizerPackageImporter.cs" />
     <Compile Include="Assets\ProPixelizer\MonoBehaviours\IRenderSnapable.cs" />
     <Compile Include="Assets\ProPixelizer\Tools\VerifyMaterials.cs" />
-    <Compile Include="Assets\ProPixelizer\MonoBehaviours\CameraRenderSnapable.cs" />
-    <Compile Include="Assets\ProPixelizer\Tools\DitherPattern.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ProPixelizer\SRP\ColorGrading.hlsl" />

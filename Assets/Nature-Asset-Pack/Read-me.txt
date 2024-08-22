@@ -1,0 +1,11 @@
+excuse me
+
+If you have been planning to open .blend
+
+>the .blend file can only be opened in UPBGE<
+
+https://upbge.org/
+###################################################################
+But if you just attach it to the blender, you will have no problems :)
+
+OBS: Rename .blend1 to .blend
