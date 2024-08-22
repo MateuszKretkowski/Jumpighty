@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 2100000, guid: aee121271d57e544199c7c9c4dfb0287, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - COLOR_GRADING_ON
   - PROPIXELIZER_DITHERING_ON
   - RECEIVE_SHADOWS_ON
   - USE_OBJECT_POSITION_ON
