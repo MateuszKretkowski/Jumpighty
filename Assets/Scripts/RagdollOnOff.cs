@@ -89,12 +89,13 @@ public class RagdollOnOff : MonoBehaviour
     // public GameObject[] arms;
     public void RagdollModeOn()
     {
+        xd = true;
         bekatafunkcjatodziwwak = false;
         //mainCollider.enabled = false;
+        animator.enabled = false;
         rb.isKinematic = true;
         rb.useGravity = false;
 
-        animator.enabled = false;
         rb.AddForce(Vector3.back * 10f, ForceMode.Impulse);
         foreach(Collider col in ragDollColliders)
         {
@@ -113,7 +114,11 @@ public class RagdollOnOff : MonoBehaviour
 
     public void RagdollModeOff()
     {
-        animator.enabled = true;
+        if (xd)
+        {
+            transform.position = pointToRagdoll.position;
+            xd = false;
+        }
         rb.isKinematic = true;
         rb.useGravity = false;
         if (!isFirstTime)
@@ -135,6 +140,7 @@ public class RagdollOnOff : MonoBehaviour
             rb.useGravity = false;
             Debug.Log("RB: " + rb.gameObject.name);
         }
+        animator.enabled = true;
         rb.isKinematic = false;
         rb.useGravity = true;
     }
@@ -146,11 +152,13 @@ public class RagdollOnOff : MonoBehaviour
     public float forceRagdoll;
     public Transform targetTransform;
 
+    bool xd;
     bool bekatafunkcjatodziwwak;
     public void TransformToPreviousPosition()
     {
         if (!bekatafunkcjatodziwwak)
         {
+            transform.position = pointToRagdoll.position;
             transform.rotation = Quaternion.EulerRotation(0f, 0f, 0f);
             transform.position += new Vector3(0, 1f, 0);
             rb.AddForce(Vector3.up * 40f, ForceMode.Impulse);

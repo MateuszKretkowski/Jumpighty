@@ -184,6 +184,7 @@ public class PlayerControllerPogo : MonoBehaviour
     {
         if (other.gameObject.layer == 7)
         {
+            rb.velocity = new Vector3(0f, 0f, 0f);
             Debug.Log("triggerenter");
 
             pogoAniamtor.ResetTrigger("pogo_jumpTrigger");
@@ -232,6 +233,9 @@ public class PlayerControllerPogo : MonoBehaviour
         {
             canJump = false;
             isGrounded = false;
+            float rotationSpeed = 1f / 1f;
+            transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, transform.rotation.y, 0, 0), 0 * Time.deltaTime);
+
         }
         if (other.gameObject.tag == "non_slippery")
         {
