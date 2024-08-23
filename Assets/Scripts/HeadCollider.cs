@@ -33,6 +33,7 @@ public class HeadCollider : MonoBehaviour
         hasRagdolled = false;
         isUnRagdolledLocal = false;
         once = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -57,15 +58,7 @@ public class HeadCollider : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerRb.velocity.y < 0.5f)
-        {
-            canRunTime = true;
-        }
-        else
-        {
-            canRunTime = false;
-        }
-        if (canRunTime && delayRagdoll > 0)
+        if (delayRagdoll > 0)
         {
             delayRagdoll -= Time.deltaTime;
         }

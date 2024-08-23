@@ -41,6 +41,7 @@ public class PlayerControllerPogo : MonoBehaviour
     public ParticleSystem jumpPs;
 
     public Transform stickEndPoint;
+    public Transform centerPoint;
 
     void Start()
     {
@@ -51,11 +52,6 @@ public class PlayerControllerPogo : MonoBehaviour
 
     void Update()
     {
-        if (isSticked && canJump)
-        {
-            rb.velocity = Vector3.zero;
-        }
-
         if (headCollider.isUnRagdolledLocal)
         {
             canJump = false;
@@ -74,9 +70,6 @@ public class PlayerControllerPogo : MonoBehaviour
                 animator.ResetTrigger("landDeepTrigger");
                 animator.SetTrigger("jumpTrigger");
 
-                Vector3 localUp = transform.TransformDirection(Vector3.up);
-                rb.AddForce(localUp * force, ForceMode.Impulse);
-
                 ParticleSystem jumpParticles = Instantiate(jumpPs, stickEndPoint.position, Quaternion.identity);
 
                 ParticleSystemRenderer renderer = jumpParticles.GetComponent<ParticleSystemRenderer>();
@@ -92,18 +85,13 @@ public class PlayerControllerPogo : MonoBehaviour
             }
         }
 
-        if (rb.velocity.y < 1)
-        {
-            rb.AddForce(Vector3.down * downwardsForce);
-        }
-
         if (rotationTime >= rotationTimeMax)
         {
             hasRotated = true;
         }
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        if (!canJump && !headCollider.isRagDolled)
+        if (!headCollider.isRagDolled)
         {
             if (horizontalInput != 0)
             {
@@ -157,33 +145,13 @@ public class PlayerControllerPogo : MonoBehaviour
             pogoAniamtor.ResetTrigger("pogo_jumpTrigger");
             pogoAniamtor.SetTrigger("pogo_landTrigger");
         }
-        if (rb.velocity.y < -1)
-        {
-            animator.SetTrigger("fallTrigger");
-            animator.ResetTrigger("jumpTrigger");
-        }
-        if (rb.velocity.y < -10f)
-        {
-            if (!isInstantiated)
-            {
-                // landingPart = Instantiate(landingPs, transform.position, Quaternion.identity);
-                // landingPart.transform.SetParent(transform);
-                // landingPart.Play();
-                isInstantiated = true;
-            }
-        }
-        else
-        {
-            // Destroy(landingPart.gameObject);
-            // landingPs.Stop();
-            isInstantiated = false;
-        }
     }
     Color currentColor;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 7)
         {
+            Debug.Log("Object has Entered Ground");
             rb.velocity = new Vector3(0f, 0f, 0f);
             Debug.Log("triggerenter");
 
@@ -234,8 +202,9 @@ public class PlayerControllerPogo : MonoBehaviour
             canJump = false;
             isGrounded = false;
             float rotationSpeed = 1f / 1f;
-            transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, transform.rotation.y, 0, 0), 0 * Time.deltaTime);
-
+            gameObject.transform.SetParent(null);
+            // transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, transform.rotation.y, 0, 0), 0 * Time.deltaTime);
+            Debug.Log("Object has Left Ground");
         }
         if (other.gameObject.tag == "non_slippery")
         {
@@ -255,11 +224,6 @@ public class PlayerControllerPogo : MonoBehaviour
             pogoAniamtor.ResetTrigger("pogo_landTrigger");
             pogoAniamtor.SetTrigger("pogo_jumpTrigger");
 
-            Vector3 localUp = transform.TransformDirection(Vector3.up);
-            rb.AddForce(localUp * minForce, ForceMode.Impulse);
-
-
-            force = minForce;
             canJump = false;
             isSticked = false;
         }
