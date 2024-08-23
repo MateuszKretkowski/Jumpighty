@@ -75,8 +75,6 @@ public class HeadCollider : MonoBehaviour
     {
         if (collision.gameObject.layer != 6 && delay == 0)
         {
-            if (playerRb.velocity.magnitude > 20f)
-            {
                 ragdollOnOff.RagdollModeOn();
             Debug.Log(collision.gameObject.layer);
             hasRagdolled = true;
@@ -84,7 +82,6 @@ public class HeadCollider : MonoBehaviour
             if (delayRagdoll <= 0)
             {
                 isUnRagdolledLocal = true;
-            }
             }
         }
     }

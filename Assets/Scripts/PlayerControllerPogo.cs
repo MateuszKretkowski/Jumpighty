@@ -42,6 +42,8 @@ public class PlayerControllerPogo : MonoBehaviour
 
     public Transform stickEndPoint;
 
+    float rotationSpeedess = 1f / 1f;
+
     void Start()
     {
         hasRotated = true;
@@ -94,7 +96,12 @@ public class PlayerControllerPogo : MonoBehaviour
 
         if (rb.velocity.y < 1)
         {
+            rb.freezeRotation = true;
             rb.AddForce(Vector3.down * downwardsForce);
+        }
+        else
+        {
+            rb.freezeRotation = false;
         }
 
         if (rotationTime >= rotationTimeMax)
@@ -233,7 +240,6 @@ public class PlayerControllerPogo : MonoBehaviour
         {
             canJump = false;
             isGrounded = false;
-            float rotationSpeed = 1f / 1f;
             transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, transform.rotation.y, 0, 0), 0 * Time.deltaTime);
 
         }
