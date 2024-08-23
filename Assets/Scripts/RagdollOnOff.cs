@@ -93,8 +93,6 @@ public class RagdollOnOff : MonoBehaviour
         bekatafunkcjatodziwwak = false;
         //mainCollider.enabled = false;
         animator.enabled = false;
-        rb.isKinematic = true;
-        rb.useGravity = false;
 
         rb.AddForce(Vector3.back * 10f, ForceMode.Impulse);
         foreach(Collider col in ragDollColliders)
@@ -119,8 +117,6 @@ public class RagdollOnOff : MonoBehaviour
             transform.position = pointToRagdoll.position;
             xd = false;
         }
-        rb.isKinematic = true;
-        rb.useGravity = false;
         if (!isFirstTime)
         {
             resetRagdoll();
@@ -141,8 +137,6 @@ public class RagdollOnOff : MonoBehaviour
             Debug.Log("RB: " + rb.gameObject.name);
         }
         animator.enabled = true;
-        rb.isKinematic = false;
-        rb.useGravity = true;
     }
 
     public GameObject Armature;
@@ -161,7 +155,6 @@ public class RagdollOnOff : MonoBehaviour
             transform.position = pointToRagdoll.position;
             transform.rotation = Quaternion.EulerRotation(0f, 0f, 0f);
             transform.position += new Vector3(0, 1f, 0);
-            rb.AddForce(Vector3.up * 40f, ForceMode.Impulse);
             bekatafunkcjatodziwwak = true;
         }
     }

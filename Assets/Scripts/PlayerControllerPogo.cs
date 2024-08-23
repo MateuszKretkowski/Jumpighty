@@ -46,7 +46,6 @@ public class PlayerControllerPogo : MonoBehaviour
     void Start()
     {
         hasRotated = true;
-        rb = GetComponent<Rigidbody>();
         force = minForce;
     }
 
@@ -152,7 +151,6 @@ public class PlayerControllerPogo : MonoBehaviour
         if (other.gameObject.layer == 7)
         {
             Debug.Log("Object has Entered Ground");
-            rb.velocity = new Vector3(0f, 0f, 0f);
             Debug.Log("triggerenter");
 
             pogoAniamtor.ResetTrigger("pogo_jumpTrigger");
@@ -243,12 +241,5 @@ public class PlayerControllerPogo : MonoBehaviour
             yield return null;
         }
 
-        PerformAction();
-    }
-
-    private void PerformAction()
-    {
-        Vector3 localUp = transform.TransformDirection(Vector3.up);
-        rb.AddForce(localUp * minForce, ForceMode.Impulse);
     }
 }
