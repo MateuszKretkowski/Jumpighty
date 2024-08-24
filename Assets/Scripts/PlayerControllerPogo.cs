@@ -136,7 +136,7 @@ public class PlayerControllerPogo : MonoBehaviour
         }
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        if (    !headCollider.isRagDolled)
+        if (!canJump && !headCollider.isRagDolled)
         {
             if (horizontalInput != 0)
             {
