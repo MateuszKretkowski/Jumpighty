@@ -67,6 +67,32 @@ public class PlayerControllerPogo : MonoBehaviour
 
         if (isPreparing && canJump)
         {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                transform.rotation = Quaternion.EulerRotation(0f, 0f, 0f);
+                pogoAniamtor.ResetTrigger("pogo_landTrigger");
+                pogoAniamtor.SetTrigger("pogo_jumpTrigger");
+
+                animator.ResetTrigger("landTrigger");
+                animator.ResetTrigger("landDeepTrigger");
+                animator.SetTrigger("jumpTrigger");
+
+                Vector3 localUp = transform.TransformDirection(Vector3.up);
+                rb.AddForce(localUp * force, ForceMode.Impulse);
+
+                ParticleSystem jumpParticles = Instantiate(jumpPs, stickEndPoint.position, Quaternion.identity);
+
+                ParticleSystemRenderer renderer = jumpParticles.GetComponent<ParticleSystemRenderer>();
+                renderer.material.color = currentColor;
+
+                jumpParticles.Play();
+                Destroy(jumpParticles.gameObject, jumpParticles.main.duration + jumpParticles.main.startLifetime.constantMax);
+
+                force = minForce;
+                isPreparing = false;
+                canJump = false;
+                isSticked = false;
+            }
             if (!Input.GetKey(KeyCode.Space))
             {
                 pogoAniamtor.ResetTrigger("pogo_landTrigger");
@@ -110,7 +136,7 @@ public class PlayerControllerPogo : MonoBehaviour
         }
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        if (!canJump && !headCollider.isRagDolled)
+        if (    !headCollider.isRagDolled)
         {
             if (horizontalInput != 0)
             {
@@ -131,6 +157,7 @@ public class PlayerControllerPogo : MonoBehaviour
 
             // rb.AddTorque(transform.right * torqueX + transform.forward * torqueZ);
         }
+
     }
     float horizontalInput;
     float verticalInput;
@@ -187,6 +214,7 @@ public class PlayerControllerPogo : MonoBehaviour
         }
     }
     Color currentColor;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 7)

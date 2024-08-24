@@ -28,7 +28,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _PixelSize: 1
+    - _PixelSize: 2
     m_Colors:
     - _BaseColor: {r: 0.42665976, g: 0.18416014, b: 0, a: 1}
     - _Color: {r: 0.4266597, g: 0.18416011, b: 0, a: 1}

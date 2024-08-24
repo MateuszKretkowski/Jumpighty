@@ -41,7 +41,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _PixelSize: 1
+    - _PixelSize: 2
     m_Colors:
     - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 0, g: 0, b: 0, a: 1}
