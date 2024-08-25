@@ -84,10 +84,12 @@ public class PlayerControllerPogo : MonoBehaviour
             float currentY = transform.rotation.eulerAngles.y;
 
             // Utwórz now¹ rotacjê tylko na podstawie osi X i Z
-            Quaternion targetRotation = Quaternion.Euler(rotations.eulerAngles.x, currentY, rotations.eulerAngles.z);
+            Quaternion targetRotations = Quaternion.Euler(rotations.eulerAngles.x, currentY, rotations.eulerAngles.z);
 
             // Interpoluj rotacjê tylko na osiach X i Z
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 15f * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotations, 15f * Time.deltaTime);
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
 
 
             // THAT IS A HARD MODE'S ROTATION MODEL; IT IS REALLY HARD.
@@ -279,7 +281,7 @@ public class PlayerControllerPogo : MonoBehaviour
             isGrounded = true;
         }
     }
-
+    Quaternion targetRotation;
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer == 7)
@@ -290,10 +292,9 @@ public class PlayerControllerPogo : MonoBehaviour
 
             Transform targetTransform = rotationObject.transform;
             Vector3 direction = targetTransform.position - transform.position;
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            targetRotation = Quaternion.LookRotation(direction);
             float rotationSpeed = 2.0f;
             rotations = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
             Debug.Log(targetRotation);
         }
         if (other.gameObject.tag == "non_slippery")
