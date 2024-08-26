@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ReflectCollider : MonoBehaviour
 {
-
+    public Rigidbody rb;
+    public float reflectMultiplier = 1.0f;
     // public PlayerController playerController;
     void Start()
     {
@@ -21,10 +22,19 @@ public class ReflectCollider : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "default_obstacle":
-                // playerController.reflectForce(other, 1.5f);
+                // Si³a do ty³u w lokalnym uk³adzie wspó³rzêdnych
+                Vector3 localBackForce = transform.TransformDirection(Vector3.back) * 15f;
+
+                // Si³a do góry w lokalnym uk³adzie wspó³rzêdnych
+                Vector3 localUpForce = transform.TransformDirection(Vector3.up) * 15f;
+
+                // Dodaj si³y w trybie impulsu
+                rb.AddForce(localBackForce, ForceMode.Impulse);
+                rb.AddForce(localUpForce, ForceMode.Impulse);
+
                 break;
             case "Trampoline":
-                // playerController.reflectForce(other, 15f);
+
                 break;
         }
     }
