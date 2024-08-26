@@ -50,6 +50,7 @@ public class PlayerControllerPogo : MonoBehaviour
     Quaternion minRotation = Quaternion.Euler(-90, 0f, -90);
 
     public TextMeshProUGUI timer;
+    public Slider slider;
 
     void Start()
     {
@@ -64,6 +65,7 @@ public class PlayerControllerPogo : MonoBehaviour
     Quaternion rotations;
     void Update()
     {
+        slider.value = force;
         if (!canJump && !headCollider.isRagDolled)
         {
             if (Input.GetKeyDown(KeyCode.W) && transform.rotation.x < maxRotation.x)
