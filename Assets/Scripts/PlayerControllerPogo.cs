@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.PlayerSettings;
 using static UnityEngine.ParticleSystem;
 
@@ -47,8 +49,13 @@ public class PlayerControllerPogo : MonoBehaviour
     Quaternion maxRotation = Quaternion.Euler(90, 0f, 90);
     Quaternion minRotation = Quaternion.Euler(-90, 0f, -90);
 
+    public TextMeshProUGUI timer;
+
     void Start()
     {
+        time = 0f;
+        timeMinutes = 0f;
+        StartCoroutine(Timers());
         hasRotated = true;
         rb = GetComponent<Rigidbody>();
         force = minForce;
@@ -191,14 +198,13 @@ public class PlayerControllerPogo : MonoBehaviour
     ParticleSystem landingPart;
     private void FixedUpdate()
     {
-
         if (isGrounded)
         {
             WaitAndPerformAction(0.1f);
         }
         if (!canJump && !hasRotated && !headCollider.isRagDolled)
         {
-            if (rotationTime < rotationTimeMax) rotationTime += 1f;
+            // if (rotationTime < rotationTimeMax) rotationTime += 1f;
         }
 
         if (isPreparing && canJump)
@@ -271,6 +277,22 @@ public class PlayerControllerPogo : MonoBehaviour
             hasRotated = false;
             rotationTime = 0f;
             StartCoroutine(JumpCaller());
+        }
+    }
+    float time;
+    float timeMinutes;
+    IEnumerator Timers()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            time += 1;
+            if (time == 60f)
+            {
+                timeMinutes += 1;
+                time = 0f;
+            }
+            timer.text = $"{timeMinutes:00}:{time:00}";
         }
     }
 
