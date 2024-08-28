@@ -247,7 +247,10 @@ public class PlayerControllerPogo : MonoBehaviour
     {
         if (other.gameObject.layer == 7)
         {
-            rb.velocity = new Vector3(0f, 0f, 0f);
+            if (other.gameObject.tag != "slippery")
+            {
+                rb.velocity = new Vector3(0f, 0f, 0f);
+            }
             Debug.Log("triggerenter");
 
             pogoAniamtor.ResetTrigger("pogo_jumpTrigger");
