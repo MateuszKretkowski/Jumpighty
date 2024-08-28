@@ -9,6 +9,7 @@ TagManager:
   - default_obstacle
   - non_slippery
   - slippery
+  - wind
   layers:
   - Default
   - TransparentFX

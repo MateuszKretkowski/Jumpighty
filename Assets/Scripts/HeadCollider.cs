@@ -73,7 +73,7 @@ public class HeadCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.layer != 6 && delay == 0)
+        if (collision.gameObject.layer != 6 && collision.gameObject.tag != "wind" && delay == 0)
         {
                 ragdollOnOff.RagdollModeOn();
             Debug.Log(collision.gameObject.layer);
