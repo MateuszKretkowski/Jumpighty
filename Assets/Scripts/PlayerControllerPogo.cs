@@ -71,22 +71,22 @@ public class PlayerControllerPogo : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W) && transform.rotation.x < maxRotation.x)
             {
                 Debug.Log("SADasdasdasasdasdfwrg");
-                rotations = Quaternion.Euler(transform.rotation.eulerAngles.x + 15f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+                rotations = Quaternion.Euler(transform.rotation.eulerAngles.x + 20f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
             }
             if (Input.GetKeyDown(KeyCode.A) && transform.rotation.z < maxRotation.z)
             {
                 Debug.Log("SADasdasdasasdasdfwrg");
-                rotations = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z + 15);
+                rotations = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z + 20f);
             }
             if (Input.GetKeyDown(KeyCode.S) && transform.rotation.x > minRotation.x)
             {
                 Debug.Log("SADasdasdasasdasdfwrg");
-                rotations = Quaternion.Euler(transform.rotation.eulerAngles.x - 15f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+                rotations = Quaternion.Euler(transform.rotation.eulerAngles.x - 20f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
             }
             if (Input.GetKeyDown(KeyCode.D) && transform.rotation.z > minRotation.z)
             {
                 Debug.Log("SADasdasdasasdasdfwrg");
-                rotations = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z - 15);
+                rotations = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z - 20f);
             }
 
             // Zachowaj bie¿¹cy k¹t Y

@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallCollider : MonoBehaviour
+public class Trampoline : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float force;
     void Start()
+    {
+        
+    }
+
+    void Update()
     {
         
     }
@@ -14,13 +19,7 @@ public class FallCollider : MonoBehaviour
     {
         if (collision.gameObject.layer == 6)
         {
-            collision.gameObject.transform.position = new Vector3 (0, 12, 0);
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.Impulse);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
