@@ -19,7 +19,8 @@ public class Trampoline : MonoBehaviour
     {
         if (collision.gameObject.layer == 6)
         {
-            collision.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.Impulse);
+            Vector3 localUp = transform.TransformDirection(Vector3.up);
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(localUp * force, ForceMode.Impulse);
         }
     }
 }
