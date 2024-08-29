@@ -13125,6 +13125,7 @@ GameObject:
   - component: {fileID: 810982764}
   - component: {fileID: 810982763}
   - component: {fileID: 810982766}
+  - component: {fileID: 810982767}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -13283,6 +13284,14 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!81 &810982767
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810982762}
+  m_Enabled: 1
 --- !u!1 &819679180
 GameObject:
   m_ObjectHideFlags: 0
