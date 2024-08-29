@@ -228,15 +228,15 @@ public class PlayerControllerPogo : MonoBehaviour
         {
             if (!isInstantiated)
             {
-                landingPart = Instantiate(landingPs, transform.position, Quaternion.identity);
-                landingPart.transform.SetParent(transform);
-                landingPart.Play();
+                //landingPart = Instantiate(landingPs, transform.position, Quaternion.identity);
+                //landingPart.transform.SetParent(transform);
+                //landingPart.Play();
                 isInstantiated = true;
             }
         }
         else
         {
-            Destroy(landingPart.gameObject);
+            //Destroy(landingPart.gameObject);
             // landingPs.Stop();
             isInstantiated = false;
         }
