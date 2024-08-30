@@ -36814,7 +36814,7 @@ GameObject:
   - component: {fileID: 2044054677}
   - component: {fileID: 2044054680}
   - component: {fileID: 2044054685}
-  - component: {fileID: 2044054686}
+  - component: {fileID: 2044054688}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -36936,7 +36936,7 @@ MonoBehaviour:
   hasRotated: 0
   rotationForce: 0
   rotationSpeed: 2
-  downwardsForce: 25
+  downwardsForce: 30
   force: 0
   maxForce: 100
   minForce: 50
@@ -36969,27 +36969,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 3.3895206, z: 1}
   m_Center: {x: 0, y: 0.74090105, z: 0}
---- !u!65 &2044054686
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044054675}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.32386184, y: 0.42645717, z: 0.36443138}
-  m_Center: {x: 0.030975282, y: -0.84406936, z: 0.7234968}
 --- !u!114 &2044054687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37010,6 +36989,27 @@ MonoBehaviour:
   cameraTransform: {fileID: 810982765}
   armatureRoot: {fileID: 2104327213125965476}
   isGrounded: 0
+--- !u!135 &2044054688
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044054675}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.22196198
+  m_Center: {x: 0, y: -0.7, z: 0.721962}
 --- !u!43 &2047986977
 Mesh:
   m_ObjectHideFlags: 0

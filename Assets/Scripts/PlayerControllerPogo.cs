@@ -123,7 +123,7 @@ public class PlayerControllerPogo : MonoBehaviour
 
         if (isPreparing && canJump)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0))
             {
                 transform.rotation = Quaternion.EulerRotation(0f, 0f, 0f);
                 pogoAniamtor.ResetTrigger("pogo_landTrigger");
@@ -184,6 +184,11 @@ public class PlayerControllerPogo : MonoBehaviour
         else
         {
             rb.freezeRotation = false;
+        }
+
+        if (rb.velocity.y > 1f)
+        {
+            animator.SetTrigger("jumpTrigger");
         }
 
         if (rotationTime >= rotationTimeMax)
@@ -333,7 +338,6 @@ public class PlayerControllerPogo : MonoBehaviour
 
     private IEnumerator JumpCaller()
     {
-        yield return new WaitForSeconds(0.2f);
         if (!isPreparing && canJump)
         {
             animator.ResetTrigger("landTrigger");
@@ -342,6 +346,7 @@ public class PlayerControllerPogo : MonoBehaviour
             pogoAniamtor.ResetTrigger("pogo_landTrigger");
             pogoAniamtor.SetTrigger("pogo_jumpTrigger");
 
+            yield return new WaitForSeconds(0.08f);
             Vector3 localUp = transform.TransformDirection(Vector3.up);
             rb.AddForce(localUp * minForce, ForceMode.Impulse);
 
