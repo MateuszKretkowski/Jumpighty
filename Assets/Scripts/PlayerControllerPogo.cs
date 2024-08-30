@@ -119,7 +119,10 @@ public class PlayerControllerPogo : MonoBehaviour
             canJump = false;
         }
 
-        if (Input.GetKey(KeyCode.Space) && canJump) isPreparing = true;
+        if (Input.GetKey(KeyCode.Space)) 
+        {
+            isPreparing = true;
+        }
 
         if (isPreparing && canJump)
         {
@@ -286,7 +289,10 @@ public class PlayerControllerPogo : MonoBehaviour
             }
             hasRotated = false;
             rotationTime = 0f;
-            StartCoroutine(JumpCaller());
+            if (!isPreparing && canJump)
+            {
+                StartCoroutine(JumpCaller());
+            }
         }
     }
     float time;
