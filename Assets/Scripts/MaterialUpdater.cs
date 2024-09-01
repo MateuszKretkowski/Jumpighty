@@ -19,52 +19,61 @@ public class MaterialUpdater : EditorWindow
 
     private static void UpdateMaterials()
     {
-        // Get all model assets in the project
-        string[] guids = AssetDatabase.FindAssets("t:Model", new[] { "Assets/Nature-Asset-Pack/Models" });
+        // Œcie¿ki do folderów, które chcesz przeszukaæ
+        string[] searchPaths = {
+            "Assets/Nature-Asset-Pack/Models",
+            "Assets/Proxy Games/Low Poly Medieval Kit"
+        };
 
-        foreach (string guid in guids)
+        foreach (string searchPath in searchPaths)
         {
-            string path = AssetDatabase.GUIDToAssetPath(guid);
-            GameObject model = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            // Get all model assets in the specified path and its subfolders
+            string[] guids = AssetDatabase.FindAssets("t:Model", new[] { searchPath });
 
-            if (model != null)
+            foreach (string guid in guids)
             {
-                Renderer[] renderers = model.GetComponentsInChildren<Renderer>();
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                GameObject model = AssetDatabase.LoadAssetAtPath<GameObject>(path);
 
-                foreach (Renderer renderer in renderers)
+                if (model != null)
                 {
-                    Material[] materials = renderer.sharedMaterials;
+                    Renderer[] renderers = model.GetComponentsInChildren<Renderer>();
 
-                    for (int i = 0; i < materials.Length; i++)
+                    foreach (Renderer renderer in renderers)
                     {
-                        Material oldMaterial = materials[i];
-                        if (oldMaterial != null)
+                        Material[] materials = renderer.sharedMaterials;
+
+                        for (int i = 0; i < materials.Length; i++)
                         {
-                            // Create the new material name by adding "1" at the end
-                            string newMaterialName = oldMaterial.name + " 1";
-                            string[] materialGuids = AssetDatabase.FindAssets(newMaterialName + " t:Material");
-
-                            if (materialGuids.Length > 0)
+                            Material oldMaterial = materials[i];
+                            if (oldMaterial != null)
                             {
-                                string newMaterialPath = AssetDatabase.GUIDToAssetPath(materialGuids[0]);
-                                Material newMaterial = AssetDatabase.LoadAssetAtPath<Material>(newMaterialPath);
+                                // Create the new material name by adding "1" at the end
+                                string newMaterialName = oldMaterial.name + " 1";
+                                string[] materialGuids = AssetDatabase.FindAssets(newMaterialName + " t:Material");
 
-                                if (newMaterial != null)
+                                if (materialGuids.Length > 0)
                                 {
-                                    materials[i] = newMaterial;
-                                }
-                                else
-                                {
-                                    Debug.LogWarning($"Material {newMaterialName} not found for {model.name}");
+                                    string newMaterialPath = AssetDatabase.GUIDToAssetPath(materialGuids[0]);
+                                    Material newMaterial = AssetDatabase.LoadAssetAtPath<Material>(newMaterialPath);
+
+                                    if (newMaterial != null)
+                                    {
+                                        materials[i] = newMaterial;
+                                    }
+                                    else
+                                    {
+                                        Debug.LogWarning($"Material {newMaterialName} not found for {model.name}");
+                                    }
                                 }
                             }
                         }
+
+                        renderer.sharedMaterials = materials;
                     }
 
-                    renderer.sharedMaterials = materials;
+                    EditorUtility.SetDirty(model);
                 }
-
-                EditorUtility.SetDirty(model);
             }
         }
 
